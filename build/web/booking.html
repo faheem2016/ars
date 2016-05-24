@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- <<Mobile Viewport Code>> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            
+    <!-- <<Attched Stylesheets>> -->
+    <link rel="stylesheet" href="css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="css/media.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>Ticket Booking</title>
+
+		<meta name="description" content="and Validation" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="assets/css/select2.css" />
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="assets/css/ace-fonts.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="assets/css/ace.min.css" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="../assets/css/ace-part2.min.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="../assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<script src="assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="../assets/js/html5shiv.min.js"></script>
+		<script src="../assets/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+
+<!-- \\ Begin Holder \\ -->
+
+	            <div class="Center">
+                    <div class="widget-box">
+                        <div class="widget-header widget-header-blue widget-header-flat">
+                                <h4 class="widget-title lighter">Ticket Booking</h4>
+                        </div>
+
+                        <div class="widget-body">
+                                <div class="widget-main">
+                                        <!-- #section:plugins/fuelux.wizard -->
+                                        <div id="fuelux-wizard" data-target="#step-container">
+                                                <!-- #section:plugins/fuelux.wizard.steps -->
+                                                <ul class="wizard-steps">
+
+                                                        <li data-target="#step1">
+                                                                <span class="step">1</span>
+                                                                <span class="title">Choose Flights</span>
+                                                        </li>
+
+                                                        <li data-target="#step2">
+                                                                <span class="                       step">2</span>
+                                                                <span class="title">Payment Info</span>
+                                                        </li>
+
+                                                        <li data-target="#step3">
+                                                                <span class="step">3</span>
+                                                                <span class="title">Traveler Info</span>
+                                                        </li>
+                                                        <li data-target="#step4">
+                                                                <span class="step">4</span>
+                                                                <span class="title">Confirmation</span>
+                                                        </li>
+                                                </ul>
+
+                                                <!-- /section:plugins/fuelux.wizard.steps -->
+                                        </div>
+
+                                        <hr />
+
+                                        <!-- #section:plugins/fuelux.wizard.container -->
+                                        <div class="step-content pos-rel" id="step-container">
+
+                                                <div class="step-pane active" id="step1" style="height: 400px; background: url('img/seating-plan.png'); background-size: 1300px 520px; background-repeat: no-repeat;">
+                                                    <div style="background-color: #34C547; height: 47%; width: 55%; margin-left: 25%; margin-top: 9% ">
+                                                        
+                                                        <form id="seats" action="" method="POST" >
+                                                            <!-- these 8 seats are economy class seats -->
+                                                            <input style="height: 25px; width: 25px;" type="checkbox" name="seat" value="1e8">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e7">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e6">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e5">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="1e1">
+                                                            
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            
+                                                            <!-- these 4 seats are first class seats -->
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f1">
+                                                            
+                                                            
+                                                            <!-- these 8 seats are economy class seats -->
+                                                            <input style="height: 25px; width: 25px" type="checkbox" name="seat" value="2e8">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e7">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e6">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e5">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2e1">
+                                                            
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            
+                                                            <!-- these 4 seats are first class seats -->
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="2f1">
+                                                            
+                                                            <br><br><br>
+                                                            
+                                                            <!-- these 8 seats are economy class seats -->
+                                                            <input style="height: 25px; width: 25px" type="checkbox" name="seat" value="3e8">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e7">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e6">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e5">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3e1">
+                                                            
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            
+                                                            <!-- these 4 seats are first class seats -->
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3f4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3f3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3f2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="3f1">
+                                                            
+                                                            
+                                                            <!-- these 8 seats are economy class seats -->
+                                                            <input style="height: 25px; width: 25px" type="checkbox" name="seat" value="4e8">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e7">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e6">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e5">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4e1">
+                                                            
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            
+                                                            <!-- these 4 seats are first class seats -->
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4f4">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4f3">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4f2">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input style="height: 25px; width: 25px"  type="checkbox" name="seat" value="4f1">
+                                                        </form>
+                                                        
+                                                    </div>
+                                                    
+                                                    <!--                                                    <form >
+                                                        <input type="checkbox" style="height: 25px; width: 25px; margin: 120px 0px 0x 350px">
+                                                    </form>-->
+                                                    </div>
+
+                                        <div class="step-pane" id="step2">
+                                                <div class="center">
+
+                                                        <div class="form-group">
+
+                                                                <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="accno">Enter Account No:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="clearfix">
+                                                                                        <input type="text" name="accno" id="accno" class="col-xs-12 col-sm-4" />
+                                                                                </div>
+                                                                        </div>
+                                                        </div>	
+
+                                                        <div style="padding: 25px"></div>
+
+                                                        <div class="form-group">
+                                                                <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="pass">Enter Password:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="clearfix">
+                                                                                        <input type="password" name="pass" id="pass" class="col-xs-12 col-sm-4" />
+                                                                                </div>
+                                                                        </div>
+                                                        </div>
+                                                </div>
+
+
+                                                </div>
+
+                                                <div class="step-pane" id="step3">
+                                                        <h3 class="lighter block green">Enter the following information</h3>
+
+
+
+                                                        <form class="form-horizontal" id="validation-form" method="get">
+
+                                                                <div class="form-group">
+                                                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Name:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="clearfix">
+                                                                                        <input type="text" id="name" name="name" class="col-xs-12 col-sm-5" />
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="space-2"></div>
+
+                                                                <div class="form-group">
+                                                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="city">City</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <select id="city" name="city" class="select2" data-placeholder="Click to Choose...">
+                                                                                        <option value="">&nbsp;</option>
+                                                                                        <option value="Lahore">Lahore</option>
+                                                                                        <option value="Multan">Multan</option>
+                                                                                        <option value="Karachi">Karachi</option>
+                                                                                        <option value="Islamabad">Islamabad</option>
+                                                                                        <option value="Peshawar">Peshawar</option>
+                                                                                        <option value="Quetta">Quetta</option>
+                                                                                        <option value="Faisalabad">Faisalabad</option>
+                                                                                </select>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="space-2"></div>
+
+                                                                <div class="form-group">
+                                                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="phone">Phone Number:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="input-group">
+                                                                                        <span class="input-group-addon">
+                                                                                                <i class="ace-icon fa fa-phone"></i>
+                                                                                        </span>
+
+                                                                                        <input type="tel" id="phone" name="phone" />
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="space-2"></div>
+
+                                                                <div class="form-group">
+                                                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">Email Address:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="clearfix">
+                                                                                        <input type="email" name="email" id="email" class="col-xs-12 col-sm-6" />
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="space-2"></div>
+
+                                                                <div class="hr hr-dotted"></div>
+
+                                                                <div class="form-group">
+                                                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="lname">Login Name:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="clearfix">
+                                                                                        <input type="text" id="lname" name="lname" class="col-xs-12 col-sm-5" />
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="password">Password:</label>
+
+                                                                        <div class="col-xs-12 col-sm-9">
+                                                                                <div class="clearfix">
+                                                                                        <input type="password" name="password" id="password" class="col-xs-12 col-sm-4" />
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                        </form>
+                                                </div>
+
+                                                <div class="step-pane" id="step4">
+                                                        <div class="center">
+                                                                <h3 class="green">Congrats!</h3>
+                                                                Your ticket has been reserved! Click finish to go back!
+                                                                <br><br><br>
+                                                                <button class="btn" type="button">
+                                                                        View Ticket
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <!-- /section:plugins/fuelux.wizard.container -->
+                                        <hr />
+                                        <div class="wizard-actions">
+                                                <!-- #section:plugins/fuelux.wizard.buttons -->
+                                                <button class="btn btn-prev">
+                                                        <i class="ace-icon fa fa-arrow-left"></i>
+                                                        Prev
+                                                </button>
+
+                                                <button class="btn btn-success btn-next" data-last="Finish">
+                                                        Next
+                                                        <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                                                </button>
+
+                                                <!-- /section:plugins/fuelux.wizard.buttons -->
+                                        </div>
+
+                                        <!-- /section:plugins/fuelux.wizard -->
+                                </div><!-- /.widget-main -->
+                        </div><!-- /.widget-body -->
+                </div>
+
+<!--[if !IE]> -->
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+		<script src="assets/js/fuelux/fuelux.wizard.min.js"></script>
+		<script src="assets/js/jquery.validate.min.js"></script>
+		<script src="assets/js/additional-methods.min.js"></script>
+		<script src="assets/js/bootbox.min.js"></script>
+		<script src="assets/js/jquery.maskedinput.min.js"></script>
+		<script src="assets/js/select2.min.js"></script>
+
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+			
+				$('[data-rel=tooltip]').tooltip();
+			
+				$(".select2").css('width','200px').select2({allowClear:true})
+				.on('change', function(){
+					$(this).closest('form').validate().element($(this));
+				}); 
+			
+			
+				var $validation = false;
+				$('#fuelux-wizard')
+				.ace_wizard({
+					//step: 2 //optional argument. wizard will jump to step "2" at first
+				})
+				.on('change' , function(e, info){
+					if(info.step == 1 && $validation) {
+						if(!$('#validation-form').valid()) return false;
+					}
+				})
+				.on('finished', function(e) {
+					bootbox.dialog({
+						message: "Thank you! Your information was successfully saved!", 
+						buttons: {
+							"success" : {
+								"label" : "OK",
+								"className" : "btn-sm btn-primary"
+							}
+
+						}
+
+					});
+					window.close();
+				}).on('stepclick', function(e){
+					//e.preventDefault();//this will prevent clicking and selecting steps
+					
+				});
+			
+			
+				//jump to a step
+				$('#step-jump').on('click', function() {
+					var wizard = $('#fuelux-wizard').data('wizard')
+					wizard.currentStep = 3;
+					wizard.setState();
+				})
+				//determine selected step
+				//wizard.selectedItem().step
+			
+			
+			
+				//hide or show the other form which requires validation
+				//this is for demo only, you usullay want just one form in your application
+				$('#skip-validation').removeAttr('checked').on('click', function(){
+					$validation = this.checked;
+					if(this.checked) {
+						$('#sample-form').hide();
+						$('#validation-form').removeClass('hide');
+					}
+					else {
+						$('#validation-form').addClass('hide');
+						$('#sample-form').show();
+					}
+				})
+			
+			
+			
+				//documentation : http://docs.jquery.com/Plugins/Validation/validate
+			
+			
+				$.mask.definitions['~']='[+-]';
+				$('#phone').mask('(999) 999-9999');
+			
+				jQuery.validator.addMethod("phone", function (value, element) {
+					return this.optional(element) || /^\(\d{3}\) \d{3}\-\d{4}( x\d{1,6})?$/.test(value);
+				}, "Enter a valid phone number.");
+			
+				$('#validation-form').validate({
+					errorElement: 'div',
+					errorClass: 'help-block',
+					focusInvalid: false,
+					rules: {
+						email: {
+							required: true,
+							email:true
+						},
+						password: {
+							required: true,
+							minlength: 5
+						},
+						password2: {
+							required: true,
+							minlength: 5,
+							equalTo: "#password"
+						},
+						name: {
+							required: true
+						},
+						phone: {
+							required: true,
+							phone: 'required'
+						},
+						url: {
+							required: true,
+							url: true
+						},
+						comment: {
+							required: true
+						},
+						state: {
+							required: true
+						},
+						platform: {
+							required: true
+						},
+						subscription: {
+							required: true
+						},
+						gender: {
+							required: true,
+						},
+						agree: {
+							required: true,
+						}
+					},
+			
+					messages: {
+						email: {
+							required: "Please provide a valid email.",
+							email: "Please provide a valid email."
+						},
+						password: {
+							required: "Please specify a password.",
+							minlength: "Please specify a secure password."
+						},
+						state: "Please choose state",
+						subscription: "Please choose at least one option",
+						gender: "Please choose gender",
+						agree: "Please accept our policy"
+					},
+			
+			
+					highlight: function (e) {
+						$(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+					},
+			
+					success: function (e) {
+						$(e).closest('.form-group').removeClass('has-error');//.addClass('has-info');
+						$(e).remove();
+					},
+			
+					errorPlacement: function (error, element) {
+						if(element.is('input[type=checkbox]') || element.is('input[type=radio]')) {
+							var controls = element.closest('div[class*="col-"]');
+							if(controls.find(':checkbox,:radio').length > 1) controls.append(error);
+							else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+						}
+						else if(element.is('.select2')) {
+							error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+						}
+						else if(element.is('.chosen-select')) {
+							error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+						}
+						else error.insertAfter(element.parent());
+					},
+			
+					submitHandler: function (form) {
+					},
+					invalidHandler: function (form) {
+					}
+				});
+			
+				
+				
+				
+				$('#modal-wizard .modal-header').ace_wizard();
+				$('#modal-wizard .wizard-actions .btn[data-dismiss=modal]').removeAttr('disabled');
+				
+				
+				/**
+				$('#date').datepicker({autoclose:true}).on('changeDate', function(ev) {
+					$(this).closest('form').validate().element($(this));
+				});
+				
+				$('#mychosen').chosen().on('change', function(ev) {
+					$(this).closest('form').validate().element($(this));
+				});
+				*/
+			})
+		</script>
+
+		<!-- the following scripts are used in demo only for onpage help and you don't need them -->
+		<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />
+		<link rel="stylesheet" href="docs/assets/js/themes/sunburst.css" />
+
+		<script type="text/javascript"> ace.vars['base'] = '..'; </script>
+		<script src="assets/js/ace/elements.onpage-help.js"></script>
+		<script src="assets/js/ace/ace.onpage-help.js"></script>
+		<script src="docs/assets/js/rainbow.js"></script>
+		<script src="docs/assets/js/language/generic.js"></script>
+		<script src="docs/assets/js/language/html.js"></script>
+		<script src="docs/assets/js/language/css.js"></script>
+		<script src="docs/assets/js/language/javascript.js"></script>
+</body>
+</html>
