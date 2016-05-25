@@ -1,3 +1,5 @@
+
+<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -303,11 +305,26 @@
                                                 <div class="col-sm-7">
                                                         <select class="col-xs-10 col-sm-5" id="form-field-1" name="from">
                                                                 <option value="">Select a City</option>
-                                                                <option value="Lahore">Lahore</option>
-                                                                <option value="Karachi">Karachi</option>
-                                                                <option value="Islamabad">Islamabad</option>
-                                                                <option value="Multan">Multan</option>
-                                                                <option value="Peshawar">Peshawar</option>
+                                                                <%
+                    
+                                                                    try{    
+                                                                        Class.forName("com.mysql.jdbc.Driver");
+                                                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                        Statement stmt = con.createStatement();
+
+                                                                        ResultSet a = stmt.executeQuery("select from_name from flight_schedule");
+                                                                        while(a.next()){
+                                                                %>
+                                                                    <option value="<%= a.getString("from_name") %>"> <%= a.getString("from_name") %> </option>
+                                                        
+                                                                <%
+                                                                }   
+                                                                    a.close();
+                                                                    }catch(Exception e){
+                                                                         System.out.println("Can't connect to Database!");
+                                                                }
+                                                                %>
+
                                                         </select>
 
                                                 </div>
@@ -319,11 +336,25 @@
                                                 <div class="col-sm-7">
                                                         <select class="col-xs-10 col-sm-5" id="form-field-1-1" name="to">
                                                                 <option value="">Select a City</option>
-                                                                <option value="Lahore">Lahore</option>
-                                                                <option value="Karachi">Karachi</option>
-                                                                <option value="Islamabad">Islamabad</option>
-                                                                <option value="Multan">Multan</option>
-                                                                <option value="Peshawar">Peshawar</option>
+                                                                <%
+                    
+                                                                    try{    
+                                                                        Class.forName("com.mysql.jdbc.Driver");
+                                                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                        Statement stmt = con.createStatement();
+
+                                                                        ResultSet a = stmt.executeQuery("select to_name from flight_schedule");
+                                                                        while(a.next()){
+                                                                %>
+                                                                    <option value="<%= a.getString("to_name") %>"> <%= a.getString("to_name") %> </option>
+                                                        
+                                                                <%
+                                                                }   
+                                                                    a.close();
+                                                                    }catch(Exception e){
+                                                                         System.out.println("Can't connect to Database!");
+                                                                }
+                                                                %>
                                                         </select>
 
                                                 </div>
