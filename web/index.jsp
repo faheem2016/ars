@@ -137,12 +137,17 @@
                                 <span class="menu-item-bg"></span>
                             </li>
                         </ul>
+                            
                     </nav>
                     <!-- // End Navigation // -->
 				</div>
-				</div>
+                        
+                  </div>
                 <div class="clear"></div>
             </div>
+            <button class="btn" style="float: right" onclick="window.location.href = 'login.html'">
+                                            Login
+            </button>
         </header>
         <!-- // End Header // -->
         <!-- \\ Begin Banner Section \\ -->
