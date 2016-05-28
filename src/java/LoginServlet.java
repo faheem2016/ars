@@ -9,22 +9,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.sql.*;
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String userID = "admin";
-	private final String password = "password";
+	
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		// get request parameters for userID and password
+            // get request parameters for userID and password
 		String user = request.getParameter("user");
 		String pwd = request.getParameter("pwd");
+                    DB con=new DB();
+                    String userID="",password="";
+                    try
+                    {
+                        con.rs=con.stmt.executeQuery("select admin_name,admin_password from admin where admin_name='"+user+"'");
+                        if(con.rs.next())
+                        {
+                            userID=con.rs.getString("admin_name");
+                            password=con.rs.getString("admin_password");
+                        }
+                        else
+                        {
+                            userID="";
+                            password="";
+                        }
+                    }
+                    catch (SQLException e)
+                    {
+                        System.out.println(e);
+                    }
+		
 		
 		if(userID.equals(user) && password.equals(pwd)){
 			HttpSession session = request.getSession();
@@ -36,10 +55,10 @@ public class LoginServlet extends HttpServlet {
 			response.addCookie(userName);
 			response.sendRedirect("LoginSuccess.jsp");
 		}else{
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
-			PrintWriter out= response.getWriter();
-			out.println("<font color=red>Either user name or password is wrong.</font>");
-			rd.include(request, response);
+                        request.setAttribute("error", "Either user name or password is wrong.");
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        response.sendRedirect("login.jsp");
+			
 		}
 
 	}

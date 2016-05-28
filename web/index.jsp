@@ -145,7 +145,7 @@
                   </div>
                 <div class="clear"></div>
             </div>
-            <button class="btn" style="float: right" onclick="window.location.href = 'login.html'">
+            <button class="btn" style="float: right" onclick="window.location.href = 'login.jsp'">
                                             Login
             </button>
         </header>
@@ -317,10 +317,10 @@
                                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                         Statement stmt = con.createStatement();
 
-                                                                        ResultSet a = stmt.executeQuery("select from_name from flight_schedule");
+                                                                        ResultSet a = stmt.executeQuery("select name from city");
                                                                         while(a.next()){
                                                                 %>
-                                                                    <option value="<%= a.getString("from_name") %>"> <%= a.getString("from_name") %> </option>
+                                                                    <option value="<%= a.getString("name") %>"> <%= a.getString("name") %> </option>
                                                         
                                                                 <%
                                                                 }   
@@ -348,10 +348,10 @@
                                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                         Statement stmt = con.createStatement();
 
-                                                                        ResultSet a = stmt.executeQuery("select to_name from flight_schedule");
+                                                                        ResultSet a = stmt.executeQuery("select name from city");
                                                                         while(a.next()){
                                                                 %>
-                                                                    <option value="<%= a.getString("to_name") %>"> <%= a.getString("to_name") %> </option>
+                                                                    <option value="<%= a.getString("name") %>"> <%= a.getString("name") %> </option>
                                                         
                                                                 <%
                                                                 }   

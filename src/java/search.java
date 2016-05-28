@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/search"})
 public class search extends HttpServlet {
-
+int flag1 = 0, flag2 = 0, flag3 = 0;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,19 +51,17 @@ public class search extends HttpServlet {
 
     private boolean compare(String from, String to, String date){
          DB con = new DB();
-     int flag1 = 0, flag2 = 0, flag3 = 0;
+     
           // check from       
          try{
-                ResultSet a = con.stmt.executeQuery("SELECT from_name FROM flight_schedule");
+             
+                ResultSet a = con.stmt.executeQuery("SELECT name  FROM flight_schedule where from_name='"+from+"'");
                 
-                while (a.next()) {
-                    if (from.equalsIgnoreCase(a.getString(1))) {
-                       flag1 = 1;
-                       
-                       break;
-                    }
+                if(a.next())
+                {
+                    flag1=1;
                 }
-                a.close();
+                
 
         }catch(SQLException e)
             {
@@ -72,17 +70,14 @@ public class search extends HttpServlet {
          
          // check to       
          try{
-                ResultSet a = con.stmt.executeQuery("SELECT to_name FROM flight_schedule");
+                ResultSet a = con.stmt.executeQuery("SELECT to_name from flight_schedule where to_name='"+to+"'");
                 
                 
-                while (a.next()) {
-                    if (to.equalsIgnoreCase(a.getString(1))) {
-                       flag2 = 1;
-                       
-                       break;
-                    }
+                 if(a.next())
+                {
+                    flag2=1;
                 }
-                a.close();
+                
 
         }catch(SQLException e)
             {
@@ -91,24 +86,21 @@ public class search extends HttpServlet {
          
          // check to       
          try{
-                ResultSet a = con.stmt.executeQuery("SELECT depart_date FROM flight_schedule");
+                ResultSet a = con.stmt.executeQuery("SELECT depart_date FROM flight_schedule where depart_date='"+date+"'");
                 
                 
-                while (a.next()) {
-                    if (date.equalsIgnoreCase(a.getString(1))) {
-                       flag3 = 1;
-                       
-                       break;
-                    }
+                if(a.next())
+                {
+                    flag3=1;
                 }
-                a.close();
+                
 
         }catch(SQLException e)
             {
                 System.out.println(e); 
             }
          
-         if ((flag1 == 1) && (flag2 == 1) && (flag3 == 1)) {
+         if ((flag1 == 1) && (flag2 == 1)&& (flag3== 1) ) {
             return true;
         } else
             return false;
