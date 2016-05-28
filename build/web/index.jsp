@@ -16,7 +16,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>FTA Airlines</title>
+		<title>FT Airlines</title>
 
 		<meta name="description" content="and Validation" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -108,7 +108,7 @@
         <header>
             <div class="Center">
                 <div class="site-logo">
-                	<h1><a href="#"><span>FTA</span>&nbsp;Airlines</a></h1>
+                    <img src="img/logo.png" alt="FT Airlines" style="width: 70%; height: 50%">
                 </div>
                <div id="mobile_sec">
                <div class="mobile"><i class="fa fa-bars"></i><i class="fa fa-times"></i></div>
@@ -157,8 +157,8 @@
 	            <div class="Center">
                     <!--  \\ Begin Left Side -->
                     <div class="leftside">
-                        <h3>Welcome to <span>FTA Airlines</span></h3>
-                        <p>FTA Airlines is based in Lahore. Our aim is to offer great value for money and efficient services.</p>
+                        <h3>Welcome to <span>FT Airlines</span></h3>
+                        <p>FT Airlines is based in Lahore. Our aim is to offer great value for money and efficient services.</p>
                         <a href="#about">MORE DETAILS</a>
                     </div>                        								
                     <!--  // End Left Side // -->
@@ -198,7 +198,7 @@
             <div class="About_sec" id="about">
                 <div class="Center">            	
                     <h2>about us</h2>            		
-                    <p>FTA Airline is based in Lahore, Pakistan. The airline started its operation on April 29, 2014. Connecting about 5 cities of Pakistan. Our aim is to offer great value for money and efficient services. The airline provides all essential on board services like free standardized meals and on board entertainment to its passengers unlike other low cost carrier.</p>
+                    <p>FT Airline is based in Lahore, Pakistan. The airline started its operation on April 29, 2014. Connecting about 5 cities of Pakistan. Our aim is to offer great value for money and efficient services. The airline provides all essential on board services like free standardized meals and on board entertainment to its passengers unlike other low cost carrier.</p>
                     <div class="Line"></div>	
                     <!-- \\ Begin Tab side \\ -->
                     <div class="Tabside">
