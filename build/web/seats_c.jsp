@@ -195,7 +195,7 @@
                             <!-- PAGE CONTENT BEGINS -->
                             <h3 class="lighter block green">Enter Ticket Number To Cancel Ticket</h3>
                                            
-                            <form class="form-horizontal" id="validation-form" method="get">
+                            <form class="form-horizontal" id="validation-form" action="Cancel_seat" method="get">
                                 
                                     <div class="form-group">
                                             <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="ticketno">Ticket Number:</label>
@@ -210,6 +210,23 @@
                                    
 
                                     <div class="space-2"></div>
+                                    
+                                    <h4 style="color: greenyellow; float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
 
                                     <div class="hr hr-dotted"></div>
                                     

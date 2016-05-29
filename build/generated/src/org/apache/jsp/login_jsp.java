@@ -77,6 +77,22 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<script src=\"../assets/js/html5shiv.js\"></script>\n");
       out.write("\t\t<script src=\"../assets/js/respond.min.js\"></script>\n");
       out.write("\t\t<![endif]-->\n");
+      out.write("                \n");
+      out.write("                <script>\n");
+      out.write("                    function validation() {\n");
+      out.write("                        var nam = document.getElementById('n').value;\n");
+      out.write("                        var pas  = document.getElementById('p').value;\n");
+      out.write("                        var blank = \"\";\n");
+      out.write("                        if (pas == blank) {\n");
+      out.write("                                document.getElementById(\"chk\").innerHTML = \"Invalid username/password\";\n");
+      out.write("                                return false;\n");
+      out.write("                        }\n");
+      out.write("                        if (nam == blank) {\n");
+      out.write("                                document.getElementById(\"chk\").innerHTML = \"Invalid username/password\";\n");
+      out.write("                                return false;\n");
+      out.write("                        }\n");
+      out.write("                    }\n");
+      out.write("                </script>\n");
       out.write("\t</head>\n");
       out.write("\n");
       out.write("\t<body class=\"login-layout\">\n");
@@ -84,7 +100,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<div class=\"main-content\">\n");
       out.write("\t\t\t\t<div class=\"row\">\n");
       out.write("\t\t\t\t\t<div class=\"col-sm-10 col-sm-offset-1\">\n");
-      out.write("\t\t\t\t\t\t<div class=\"login-container\">\n");
+      out.write("                                            <div class=\"login-container\" style=\"margin-top: 100px\">\n");
       out.write("\t\t\t\t\t\t\t<div class=\"center\">\n");
       out.write("\t\t\t\t\t\t\t\t<h1>\n");
       out.write("\t\t\t\t\t\t\t\t\t<span class=\"red\">FT</span>\n");
@@ -106,18 +122,18 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<div class=\"space-6\"></div>\n");
       out.write("\n");
-      out.write("                                                                                        <form action=\"LoginServlet\" method=\"POST\" >\n");
+      out.write("                                                                                        <form action=\"LoginServlet\" method=\"POST\" onsubmit=\"return validation()\" >\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<fieldset>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"block clearfix\">\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"block input-icon input-icon-right\">\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"name\" class=\"form-control\" placeholder=\"Username\" />\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input id=\"n\" type=\"text\" name=\"name\" class=\"form-control\" placeholder=\"Username\" />\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"ace-icon fa fa-user\"></i>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n");
       out.write("\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"block clearfix\">\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"block input-icon input-icon-right\">\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"password\" name=\"pass\" class=\"form-control\" placeholder=\"Password\" />\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input id=\"p\" type=\"password\" name=\"pass\" class=\"form-control\" placeholder=\"Password\" />\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"ace-icon fa fa-lock\"></i>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n");
@@ -130,13 +146,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"ace-icon fa fa-key\"></i>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"bigger-110\">Login</span>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n");
+      out.write("                                                                                                            <button class=\"width-35 pull-left btn btn-sm btn\" type=\"button\" onclick=\"window.location.href = 'index.jsp'\">\n");
+      out.write("                                                                                                                    Back\n");
+      out.write("                                                                                                            </button>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n");
       out.write("\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"space-4\"></div>\n");
-      out.write("                                                                                                        \n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t</fieldset>\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t</form>\n");
-      out.write("                                                                                            <h4 style=\"color: red;float:right\" id=\"chk\">\n");
+      out.write("                                                                                                        <h4 style=\"color: red;float:right\" id=\"chk\">\n");
       out.write("                                                                                                            ");
 
 
@@ -147,6 +163,9 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
                                                                                                             
       out.write("\n");
       out.write("                                                                                                        </h4>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t</fieldset>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t</form>\n");
+      out.write("                                                                                            \n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</div><!-- /.widget-main -->\n");
       out.write("\n");

@@ -42,36 +42,24 @@ public class update_pass extends HttpServlet {
         String p_id="";
         try
         {
-            con.rs=con.stmt.executeQuery("select pas_tno from booked_seats where pas_tno='"+T_no+"'");
+            con.rs=con.stmt.executeQuery("select pas_tno, pas_id from booked_seats where pas_tno='"+T_no+"'");
             if (con.rs.next()) {
-                String s_no=con.rs.getString("pas_tno");
-                if (!s_no.equals("")) {
-                    
+                String s_no = con.rs.getString("pas_tno");
+                p_id = con.rs.getString("pas_id");
                 
                     try
                     {
-                        con1.rs=con1.stmt.executeQuery("select pas_id from booked_seats where pas_tno='"+T_no+"'");
-                        while (con1.rs.next())
-                        {
-                           p_id=con.rs.getString("pas_tno");
-                           if (!p_id.equals("")) {
-                                try
-                                {
-                                    con2.stmt.execute("UPDATE traveler_detail set pas_name='"+pass_name+"' pas_city='"+city+"' "
-                                            + "pas_email='"+email+"' pas_phone='"+phone+"' where pas_id='"+p_id+"'");
-                                }
-                                catch(SQLException e)
-                                {
-                                    System.out.println(e);
-                                }
-                           }
-                        }
+                        
+                        con2.stmt.execute("UPDATE traveler_detail set pas_name='"+pass_name+"', pas_city='"+city+"', "
+                                + "pas_tno='"+s_no+"', pas_email='"+email+"', pas_phone='"+phone+"' where pas_id='"+p_id+"'");
                     }
                     catch(SQLException e)
                     {
                         System.out.println(e);
                     }
-                }
+                        
+                
+            
                 request.setAttribute("success", "Ticket has been successfully Updated!");
                 request.getRequestDispatcher("update_p.jsp").forward(request, response);
                 

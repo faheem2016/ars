@@ -267,7 +267,7 @@
 
                                     <div class="space-2"></div>
                                     
-                                    <h4 style="color: red;float:right" id="chk">
+                                    <h4 style="color: greenyellow;float:right" id="chk">
                                         <%
 
                                             if(request.getAttribute("success") != null){

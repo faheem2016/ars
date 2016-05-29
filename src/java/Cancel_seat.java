@@ -32,7 +32,7 @@ public class Cancel_seat extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String t_no=request.getParameter("Ticket_no"); 
+        String t_no=request.getParameter("ticketNo"); 
         String pas_id="";
         DB con=new DB();
         DB con1=new DB();
@@ -60,13 +60,14 @@ public class Cancel_seat extends HttpServlet {
                 {
                     System.out.println(e);
                 }
-                response.sendRedirect("cancel_comp.jsp");
+                
+                request.setAttribute("success", "Ticket has been successfully Deleted!");
+                request.getRequestDispatcher("seats_c.jsp").forward(request, response);
             }
             else
             {
                 request.setAttribute("error", "This ticket does not exist.");
-                request.getRequestDispatcher("Update_p.jsp").forward(request, response);
-                response.sendRedirect("Update_p.jsp");
+                request.getRequestDispatcher("seats_c.jsp").forward(request, response);
             }
         }
         catch (SQLException e)
