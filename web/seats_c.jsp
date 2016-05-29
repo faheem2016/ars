@@ -167,7 +167,7 @@
 					</li>
 
 					<li class="">
-						<a href="seats_r.jsp">
+						<a href="booking.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Seats Reservation</span>
 						</a>
@@ -186,6 +186,63 @@
 
 					
 			</div><!-- /.main-content -->
+
+			</div><!-- /.main-content -->
+                
+                <div class="page-content-area">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <h3 class="lighter block green">Enter Ticket Number To Cancel Ticket</h3>
+                                           
+                            <form class="form-horizontal" id="validation-form" method="get">
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="ticketno">Ticket Number:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="text" id="ticketNo" name="ticketNo" class="col-xs-12 col-sm-5" />
+                                                    </div>
+                                            </div>
+                                    </div>
+                                
+                                   
+
+                                    <div class="space-2"></div>
+
+                                    <div class="hr hr-dotted"></div>
+                                    
+                                    
+                                    <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-info" type="submit">
+                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                    Submit
+                                            </button>
+
+                                            &nbsp; &nbsp; &nbsp;
+                                            <button class="btn" type="reset">
+                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                    Reset
+                                            </button>
+                                    </div>
+                                    </div>
+
+
+                            </form>   
+
+
+                    </div>
+                        
+                  
+                            
+                </div><!-- PAGE CONTENT ENDS -->
+                                            </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                            </div><!-- /.page-content-area -->
+                    </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
 
 			<div class="footer">
 				<div class="footer-inner">

@@ -167,7 +167,7 @@
 					</li>
 
 					<li class="active">
-						<a href="seats_r.jsp">
+						<a href="booking.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Seats Reservation</span>
 						</a>

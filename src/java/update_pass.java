@@ -31,7 +31,7 @@ public class update_pass extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String T_no=request.getParameter("Ticket_No");
+        String T_no=request.getParameter("ticketNo");
         String pass_name=request.getParameter("name");
         String city=request.getParameter("city");
         String phone=request.getParameter("phone");
@@ -45,33 +45,40 @@ public class update_pass extends HttpServlet {
             con.rs=con.stmt.executeQuery("select pas_tno from booked_seats where pas_tno='"+T_no+"'");
             if (con.rs.next()) {
                 String s_no=con.rs.getString("pas_tno");
-                try
-                {
-                    con1.rs=con1.stmt.executeQuery("select pas_id from booked_seats where pas_tno='"+T_no+"'");
-                    while (con1.rs.next())
+                if (!s_no.equals("")) {
+                    
+                
+                    try
                     {
-                       
-                        try
+                        con1.rs=con1.stmt.executeQuery("select pas_id from booked_seats where pas_tno='"+T_no+"'");
+                        while (con1.rs.next())
                         {
-                            con2.stmt.execute("update traveler_detail set pas_name='"+pass_name+"' pas_city='"+city+"' "
-                                    + "pas_email='"+email+"' pas_phone='"+phone+"' where pas_id='"+p_id+"'");
-                        }
-                        catch(SQLException e)
-                        {
-                            System.out.println(e);
+                           p_id=con.rs.getString("pas_tno");
+                           if (!p_id.equals("")) {
+                                try
+                                {
+                                    con2.stmt.execute("UPDATE traveler_detail set pas_name='"+pass_name+"' pas_city='"+city+"' "
+                                            + "pas_email='"+email+"' pas_phone='"+phone+"' where pas_id='"+p_id+"'");
+                                }
+                                catch(SQLException e)
+                                {
+                                    System.out.println(e);
+                                }
+                           }
                         }
                     }
+                    catch(SQLException e)
+                    {
+                        System.out.println(e);
+                    }
                 }
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                }
-                response.sendRedirect("p_updated.jsp");
+                request.setAttribute("success", "Ticket has been successfully Updated!");
+                request.getRequestDispatcher("update_p.jsp").forward(request, response);
+                
                 
             } else {
                 request.setAttribute("error", "This ticket does not exist.");
-                request.getRequestDispatcher("Update_p.jsp").forward(request, response);
-                response.sendRedirect("Update_p.jsp");
+                request.getRequestDispatcher("update_p.jsp").forward(request, response);
             }
             
         }

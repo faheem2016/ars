@@ -167,7 +167,7 @@
 					</li>
 
 					<li class="">
-						<a href="seats_r.jsp">
+						<a href="booking.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Seats Reservation</span>
 						</a>
@@ -184,8 +184,138 @@
 						<b class="arrow"></b>
 					</li>
 
+
+                                    
+
 					
-			</div><!-- /.main-content -->
+		</div><!-- /.main-content -->
+                
+                <div class="page-content-area">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <h3 class="lighter block green">Enter the following information to update Passenger's Info</h3>
+                                           
+                            <form class="form-horizontal" id="validation-form" action="update_pass" method="get">
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="ticketno">Ticket Number:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="text" id="ticketNo" name="ticketNo" class="col-xs-12 col-sm-5" />
+                                                    </div>
+                                            </div>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Name:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="text" id="name" name="name" class="col-xs-12 col-sm-5" />
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                    <div class="space-2"></div>
+
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="city">City</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <select id="city" name="city" class="select2" data-placeholder="Click to Choose...">
+                                                            <option value="">&nbsp;</option>
+                                                            <option value="Lahore">Lahore</option>
+                                                            <option value="Multan">Multan</option>
+                                                            <option value="Karachi">Karachi</option>
+                                                            <option value="Islamabad">Islamabad</option>
+                                                            <option value="Peshawar">Peshawar</option>
+                                                            <option value="Quetta">Quetta</option>
+                                                            <option value="Faisalabad">Faisalabad</option>
+                                                    </select>
+                                            </div>
+                                    </div>
+
+                                    <div class="space-2"></div>
+
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="phone">Phone Number:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                    <i class="ace-icon fa fa-phone"></i>
+                                                            </span>
+
+                                                            <input type="tel" id="phone" name="phone" />
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                    <div class="space-2"></div>
+
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">Email Address:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="email" name="email" id="email" class="col-xs-12 col-sm-6" />
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                    <div class="space-2"></div>
+                                    
+                                    <h4 style="color: red;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
+
+                                    <div class="hr hr-dotted"></div>
+                                    
+                                    
+                                    <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-info" type="submit">
+                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                    Submit
+                                            </button>
+
+                                            &nbsp; &nbsp; &nbsp;
+                                            <button class="btn" type="reset">
+                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                    Reset
+                                            </button>
+                                    </div>
+                                    </div>
+
+
+                            </form>   
+
+
+                    </div>
+                        
+                  
+                            
+                </div><!-- PAGE CONTENT ENDS -->
+                                            </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                            </div><!-- /.page-content-area -->
+                    </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
 
 			<div class="footer">
 				<div class="footer-inner">
@@ -260,6 +390,7 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {
+                                
 				$('.easy-pie-chart.percentage').each(function(){
 					var $box = $(this).closest('.infobox');
 					var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
