@@ -145,8 +145,8 @@
                   </div>
                 <div class="clear"></div>
             </div>
-            <button class="btn" style="float: right" onclick="window.location.href = 'login.jsp'">
-                                            Login
+            <button class="btn btn-info" style="float: right" onclick="window.location.href = 'login.jsp'">
+              Login
             </button>
         </header>
         <!-- // End Header // -->

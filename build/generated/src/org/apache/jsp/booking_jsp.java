@@ -146,12 +146,12 @@ public final class booking_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                        <!-- #section:plugins/fuelux.wizard.container -->\n");
       out.write("                                        <div class=\"step-content pos-rel\" id=\"step-container\">\n");
       out.write("\n");
-      out.write("                                                <div class=\"step-pane active\" id=\"step1\" style=\"height: 400px; background: url('img/seating-plan.png'); background-size: 1300px 510px; background-repeat: no-repeat;\">\n");
-      out.write("                                                    <div style=\" height: 47%; width: 55%; margin-left: 25%; margin-top: 9%; position: relative \">\n");
+      out.write("                                                <div class=\"step-pane active\" id=\"step1\" style=\"position: relative; height: 400px; background: url('img/seating-plan.png'); background-size: 1300px 510px; background-repeat: no-repeat;\">\n");
+      out.write("                                                    <div style=\" height: 47%; width: 55%; margin-left: 25%; margin-top: 9%\">\n");
       out.write("                                                        \n");
       out.write("                                                        <form id=\"seats\" action=\"\" method=\"POST\" >\n");
       out.write("                                                            <!-- these 8 seats are economy class seats -->\n");
-      out.write("                                                            <table style=\"margin-left: 30px;margin-top: 50px; position: absolute \">\n");
+      out.write("                                                            <table style=\"margin-left: 30px;margin-top: 50px\">\n");
       out.write("                                                                <tr>\n");
       out.write("\n");
       out.write("                                                            ");
@@ -183,6 +183,8 @@ public final class booking_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                                                            </tr>\n");
       out.write("                                                            </table>\n");
+      out.write("                                                        \n");
+      out.write("                                                                \n");
       out.write("<!--                                                            <input style=\"height: 25px; width: 25px;\" type=\"checkbox\" name=\"seat\" value=\"1e8\">\n");
       out.write("                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
       out.write("                                                            <input style=\"height: 25px; width: 25px\"  type=\"checkbox\" name=\"seat\" value=\"1e7\">\n");
@@ -304,9 +306,9 @@ public final class booking_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                    <!--                                                    <form >\n");
       out.write("                                                        <input type=\"checkbox\" style=\"height: 25px; width: 25px; margin: 120px 0px 0x 350px\">\n");
       out.write("                                                    </form>-->\n");
-      out.write("                                                    </div>\n");
+      out.write("                                                </div>\n");
       out.write("\n");
-      out.write("                                                <div class=\"step-pane\" id=\"step2\">\n");
+      out.write("                                            <div class=\"step-pane\" id=\"step2\">\n");
       out.write("                                                     <h3 class=\"lighter block green\">Enter the following information</h3>\n");
       out.write("\n");
       out.write("\n");

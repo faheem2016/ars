@@ -21,8 +21,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
             // get request parameters for userID and password
-		String user = request.getParameter("user");
-		String pwd = request.getParameter("pwd");
+		String user = request.getParameter("name");
+		String pwd = request.getParameter("pass");
                     DB con=new DB();
                     String userID="",password="";
                     try
@@ -47,13 +47,13 @@ public class LoginServlet extends HttpServlet {
 		
 		if(userID.equals(user) && password.equals(pwd)){
 			HttpSession session = request.getSession();
-			session.setAttribute("user", "Pankaj");
+			session.setAttribute("user", user);
 			//setting session to expiry in 30 mins
 			session.setMaxInactiveInterval(30*60);
 			Cookie userName = new Cookie("user", user);
 			userName.setMaxAge(30*60);
 			response.addCookie(userName);
-			response.sendRedirect("LoginSuccess.jsp");
+			response.sendRedirect("Admin-Home.jsp");
 		}else{
                         request.setAttribute("error", "Either user name or password is wrong.");
                         request.getRequestDispatcher("login.jsp").forward(request, response);
