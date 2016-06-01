@@ -1,3 +1,6 @@
+
+<%@page import="java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -166,7 +169,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="active">
+					<li class="">
 						<a href="booking.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Seats Reservation</span>
@@ -184,7 +187,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+                                        <li class="active">
 						<a href="admins.jsp">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text"> Manage Admins</span>
@@ -193,6 +196,91 @@
 						<b class="arrow"></b>
 					</li>
 			</div><!-- /.main-content -->
+
+			<div class="page-content-area">
+				
+                            <div class="row">
+                                    <div class="col-xs-9">
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="page-header">
+                                                    <h1>Manage Admins                             </h1>
+                                                </div><!-- /.page-header -->
+                                                
+                                                <!-- PAGE CONTENT BEGINS -->
+                            <h3 class="lighter block green">Enter the following information</h3>
+                                           
+                            <form class="form-horizontal" id="validation-form" action="addAdmin" method="get">
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Admin Name:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="text" id="name" name="name" class="col-xs-12 col-sm-5" />
+                                                    </div>
+                                            </div>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="password">Password:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="password" id="password" name="password" class="col-xs-12 col-sm-5" />
+                                                            
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                    
+
+                                    <div class="space-2"></div>
+                                    
+                                    <h4 style="color: greenyellow;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
+
+                                    <div class="hr hr-dotted"></div>
+                                    
+                                    
+                                    <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-info" type="submit">
+                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                    Submit
+                                            </button>
+
+                                            &nbsp; &nbsp; &nbsp;
+                                            <button class="btn" type="reset">
+                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                    Reset
+                                            </button>
+                                    </div>
+                                    </div>
+
+
+                            </form>   
+
+                                </div><!-- /.span -->
+                        </div><!-- /.row -->
+                         </div><!-- /.page-content-area -->
+                    </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
 
 			<div class="footer">
 				<div class="footer-inner">
@@ -229,6 +317,7 @@
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
+
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
@@ -479,6 +568,8 @@
 			
 			})
 		</script>
+
+
 
 		<!-- the following scripts are used in demo only for onpage help and you don't need them -->
 		<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />

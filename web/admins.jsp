@@ -1,3 +1,6 @@
+
+<%@page import="java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -166,7 +169,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="active">
+					<li class="">
 						<a href="booking.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Seats Reservation</span>
@@ -184,7 +187,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+                                        <li class="active">
 						<a href="admins.jsp">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text"> Manage Admins</span>
@@ -193,6 +196,90 @@
 						<b class="arrow"></b>
 					</li>
 			</div><!-- /.main-content -->
+
+			<div class="page-content-area">
+				
+                            <div class="row">
+                                    <div class="col-xs-9">
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="page-header">
+                                                    <h1>Manage Admins                             </h1>
+                                                </div><!-- /.page-header -->
+                                                
+                                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                                            <thead>
+                                                                    <tr>
+                                                                        <th>Admin Name</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                            </thead>
+                                                            
+                                                            <%
+                    
+                                                                try{    
+                                                                    Class.forName("com.mysql.jdbc.Driver");
+                                                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                    Statement stmt = con.createStatement();
+
+                                                                    ResultSet a = stmt.executeQuery("select admin_name,admin_id from admin");
+
+
+                                                                    while(a.next()){
+                                                            %>
+                                                                                    
+                                                                <tr>
+                                                                        <td>
+                                                                            <%= a.getString("admin_name") %>
+                                                                        </td>
+
+                                                                        <td>
+                                                                                <div class="hidden-sm hidden-xs btn-group">
+                                                                                    
+                                                                                        <a href="update_admin?id='<%= a.getString("admin_id") %>'" class="btn btn-primary btn-sm"> <i class="ace-icon fa fa-edit"> </i> </a>
+
+                                                                                        <a href="delete_admin?id='<%= a.getString("admin_id") %>'" class="btn btn-danger btn-sm"> <i class="ace-icon fa fa-trash-o"> </i> </a>
+
+
+                                                                                </div>
+                                                                        </td>
+                                                                </tr>
+                                                            
+                                                            <%
+                                                                }   
+                                                                a.close();
+                                                                }catch(Exception e){
+                                                                     System.out.println("Can't connect to Database!");
+                                                                }
+                                                            %>
+                                                </table>
+                                                
+                                                <div class="page-header">
+                                                    <a href="addAdmin.jsp"><h5>+ Add new Admin</h5></a>
+                                                </div><!-- /.page-header -->
+
+                                    <h4 style="color: greenyellow; float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red; float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
+                                </div><!-- /.span -->
+                        </div><!-- /.row -->
+                         </div><!-- /.page-content-area -->
+                    </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
 
 			<div class="footer">
 				<div class="footer-inner">
@@ -229,6 +316,7 @@
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
+
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
@@ -479,6 +567,8 @@
 			
 			})
 		</script>
+
+
 
 		<!-- the following scripts are used in demo only for onpage help and you don't need them -->
 		<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />

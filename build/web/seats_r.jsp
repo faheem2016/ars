@@ -8,7 +8,7 @@
             %>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - FT Airlines Admin</title>
+		<title>FT Airlines Admin Panel</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -63,7 +63,7 @@
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="Admin-Home.jsp" class="navbar-brand">
 						<small>
-							FT Airlines Admin
+							FT Airlines Admin Panel
 						</small>
 					</a>
 
@@ -184,7 +184,14 @@
 						<b class="arrow"></b>
 					</li>
 
-					
+					<li class="">
+						<a href="admins.jsp">
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text"> Manage Admins</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
 			</div><!-- /.main-content -->
 
 			<div class="footer">

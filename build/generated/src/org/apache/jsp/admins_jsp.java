@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.sql.*;
 
-public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class admins_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -42,7 +42,6 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -203,7 +202,7 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t\t\t\t<b class=\"arrow\"></b>\n");
       out.write("\t\t\t\t\t</li>\n");
       out.write("\n");
-      out.write("\t\t\t\t\t<li class=\"active\">\n");
+      out.write("\t\t\t\t\t<li class=\"\">\n");
       out.write("\t\t\t\t\t\t<a href=\"update_s.jsp\">\n");
       out.write("\t\t\t\t\t\t\t<i class=\"menu-icon fa fa-desktop\"></i>\n");
       out.write("\t\t\t\t\t\t\t<span class=\"menu-text\"> Update Schedule </span>\n");
@@ -238,9 +237,9 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t\t\t\t<b class=\"arrow\"></b>\n");
       out.write("\t\t\t\t\t</li>\n");
       out.write("\n");
-      out.write("                                        <li class=\"\">\n");
+      out.write("                                        <li class=\"active\">\n");
       out.write("\t\t\t\t\t\t<a href=\"admins.jsp\">\n");
-      out.write("\t\t\t\t\t\t\t<i class=\"menu-icon fa fa-desktop\"></i>\n");
+      out.write("\t\t\t\t\t\t\t<i class=\"menu-icon fa fa-tachometer\"></i>\n");
       out.write("\t\t\t\t\t\t\t<span class=\"menu-text\"> Manage Admins</span>\n");
       out.write("\t\t\t\t\t\t</a>\n");
       out.write("\n");
@@ -256,17 +255,14 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                                        <div class=\"row\">\n");
       out.write("                                            <div class=\"col-xs-12\">\n");
       out.write("                                                <div class=\"page-header\">\n");
-      out.write("                                                    <h1>Manage Flight Schedule</h1>\n");
+      out.write("                                                    <h1>Manage Admins                             </h1>\n");
       out.write("                                                </div><!-- /.page-header -->\n");
       out.write("                                                \n");
       out.write("                                                <table id=\"sample-table-1\" class=\"table table-striped table-bordered table-hover\">\n");
       out.write("                                                            <thead>\n");
       out.write("                                                                    <tr>\n");
-      out.write("                                                                        <th>Departure Date</th>\n");
-      out.write("                                                                        <th>Departure Time</th>\n");
-      out.write("                                                                        <th>From</th>\n");
-      out.write("                                                                        <th>To</th>\n");
-      out.write("                                                                        <th>Actions</th>\n");
+      out.write("                                                                        <th>Admin Name</th>\n");
+      out.write("                                                                        <th></th>\n");
       out.write("                                                                    </tr>\n");
       out.write("                                                            </thead>\n");
       out.write("                                                            \n");
@@ -278,8 +274,9 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
                                                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                     Statement stmt = con.createStatement();
 
-                                                                    ResultSet a = stmt.executeQuery("select departure_date,time,from_id,to_id"
-                                                                                                   + "from flight_schedule");
+                                                                    ResultSet a = stmt.executeQuery("select admin_name,admin_id from admin");
+
+
                                                                     while(a.next()){
                                                             
       out.write("\n");
@@ -287,16 +284,7 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                                                                <tr>\n");
       out.write("                                                                        <td>\n");
       out.write("                                                                            ");
-      out.print( a.getString("departure_date") );
-      out.write("\n");
-      out.write("                                                                            ");
-      out.print( a.getString("time") );
-      out.write("\n");
-      out.write("                                                                            ");
-      out.print( a.getString("from_id") );
-      out.write("\n");
-      out.write("                                                                            ");
-      out.print( a.getString("to_id") );
+      out.print( a.getString("admin_name") );
       out.write("\n");
       out.write("                                                                        </td>\n");
       out.write("\n");
@@ -304,11 +292,11 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                                                                                <div class=\"hidden-sm hidden-xs btn-group\">\n");
       out.write("                                                                                    \n");
       out.write("                                                                                        <a href=\"update_admin?id='");
-      out.print( a.getString("id") );
+      out.print( a.getString("admin_id") );
       out.write("'\" class=\"btn btn-primary btn-sm\"> <i class=\"ace-icon fa fa-edit\"> </i> </a>\n");
       out.write("\n");
       out.write("                                                                                        <a href=\"delete_admin?id='");
-      out.print( a.getString("id") );
+      out.print( a.getString("admin_id") );
       out.write("'\" class=\"btn btn-danger btn-sm\"> <i class=\"ace-icon fa fa-trash-o\"> </i> </a>\n");
       out.write("\n");
       out.write("\n");
@@ -326,11 +314,38 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
                                                             
       out.write("\n");
       out.write("                                                </table>\n");
-      out.write("                                                \n");
-      out.write("                                                <div class=\"page-header\">\n");
-      out.write("                                                    <a href=\"addAdmin.jsp\"><h5>+ Add new Admin</h5></a>\n");
-      out.write("                                                </div><!-- /.page-header -->\n");
+      out.write("<!--\t\t\t\t\t\t\t\t\t\t<table class=\"table table-bordered\">\n");
+      out.write("<thead>\n");
+      out.write("<tr>\n");
+      out.write("<th>Firstname</th>\n");
+      out.write("<th>Lastname</th>\n");
+      out.write("<th>Email</th>\n");
+      out.write("<th>Action</th>  \n");
+      out.write("</tr>\n");
+      out.write("</thead>\n");
+      out.write("<tbody>\n");
+      out.write("<tr>\n");
+      out.write("<td>John</td>\n");
+      out.write("<td>Doe</td>\n");
+      out.write("<td>john@example.com</td>\n");
+      out.write("<td> \n");
+      out.write("<a href=\"Cancel_seat?id=5\" class=\"btn btn-danger btn-sm\"> <i class=\"ace-icon fa fa-trash-o\"> </i> </a>\n");
+      out.write("<a href=\"edit_admins?id=6\" class=\"btn btn-primary btn-sm\"> <i class=\"ace-icon fa fa-edit\"> </i> </a>\n");
+      out.write("</td>\n");
+      out.write("</tr>\n");
+      out.write("<tr>\n");
+      out.write("<td>Mary</td>\n");
+      out.write("<td>Moe</td>\n");
+      out.write("<td>mary@example.com</td>\n");
+      out.write("</tr>\n");
+      out.write("<tr>\n");
+      out.write("<td>July</td>\n");
+      out.write("<td>Dooley</td>\n");
+      out.write("<td>july@example.com</td>\n");
+      out.write("</tr>\n");
       out.write("\n");
+      out.write("</tbody>\n");
+      out.write("</table>-->\n");
       out.write("                                    <h4 style=\"color: greenyellow; float:right\" id=\"chk\">\n");
       out.write("                                        ");
 

@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.sql.*;
 
-public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class update_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -42,7 +42,6 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -203,7 +202,7 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t\t\t\t<b class=\"arrow\"></b>\n");
       out.write("\t\t\t\t\t</li>\n");
       out.write("\n");
-      out.write("\t\t\t\t\t<li class=\"active\">\n");
+      out.write("\t\t\t\t\t<li class=\"\">\n");
       out.write("\t\t\t\t\t\t<a href=\"update_s.jsp\">\n");
       out.write("\t\t\t\t\t\t\t<i class=\"menu-icon fa fa-desktop\"></i>\n");
       out.write("\t\t\t\t\t\t\t<span class=\"menu-text\"> Update Schedule </span>\n");
@@ -238,9 +237,9 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t\t\t\t<b class=\"arrow\"></b>\n");
       out.write("\t\t\t\t\t</li>\n");
       out.write("\n");
-      out.write("                                        <li class=\"\">\n");
+      out.write("                                        <li class=\"active\">\n");
       out.write("\t\t\t\t\t\t<a href=\"admins.jsp\">\n");
-      out.write("\t\t\t\t\t\t\t<i class=\"menu-icon fa fa-desktop\"></i>\n");
+      out.write("\t\t\t\t\t\t\t<i class=\"menu-icon fa fa-tachometer\"></i>\n");
       out.write("\t\t\t\t\t\t\t<span class=\"menu-text\"> Manage Admins</span>\n");
       out.write("\t\t\t\t\t\t</a>\n");
       out.write("\n");
@@ -256,80 +255,124 @@ public final class update_005fs_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                                        <div class=\"row\">\n");
       out.write("                                            <div class=\"col-xs-12\">\n");
       out.write("                                                <div class=\"page-header\">\n");
-      out.write("                                                    <h1>Manage Flight Schedule</h1>\n");
+      out.write("                                                    <h1>Manage Admins                             </h1>\n");
       out.write("                                                </div><!-- /.page-header -->\n");
       out.write("                                                \n");
-      out.write("                                                <table id=\"sample-table-1\" class=\"table table-striped table-bordered table-hover\">\n");
-      out.write("                                                            <thead>\n");
-      out.write("                                                                    <tr>\n");
-      out.write("                                                                        <th>Departure Date</th>\n");
-      out.write("                                                                        <th>Departure Time</th>\n");
-      out.write("                                                                        <th>From</th>\n");
-      out.write("                                                                        <th>To</th>\n");
-      out.write("                                                                        <th>Actions</th>\n");
-      out.write("                                                                    </tr>\n");
-      out.write("                                                            </thead>\n");
-      out.write("                                                            \n");
-      out.write("                                                            ");
+      out.write("                                                <!-- PAGE CONTENT BEGINS -->\n");
+      out.write("                            <h3 class=\"lighter block green\">Enter the following information to update Passenger's Info</h3>\n");
+      out.write("                                           \n");
+      out.write("                            <form class=\"form-horizontal\" id=\"validation-form\" action=\"update_pass\" method=\"get\">\n");
+      out.write("                                \n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                            <label class=\"control-label col-xs-12 col-sm-3 no-padding-right\" for=\"ticketno\">Ticket Number:</label>\n");
+      out.write("\n");
+      out.write("                                            <div class=\"col-xs-12 col-sm-9\">\n");
+      out.write("                                                    <div class=\"clearfix\">\n");
+      out.write("                                                            <input type=\"text\" id=\"ticketNo\" name=\"ticketNo\" class=\"col-xs-12 col-sm-5\" />\n");
+      out.write("                                                    </div>\n");
+      out.write("                                            </div>\n");
+      out.write("                                    </div>\n");
+      out.write("                                \n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                            <label class=\"control-label col-xs-12 col-sm-3 no-padding-right\" for=\"name\">Name:</label>\n");
+      out.write("\n");
+      out.write("                                            <div class=\"col-xs-12 col-sm-9\">\n");
+      out.write("                                                    <div class=\"clearfix\">\n");
+      out.write("                                                            <input type=\"text\" id=\"name\" name=\"name\" class=\"col-xs-12 col-sm-5\" />\n");
+      out.write("                                                    </div>\n");
+      out.write("                                            </div>\n");
+      out.write("                                    </div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"space-2\"></div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                            <label class=\"control-label col-xs-12 col-sm-3 no-padding-right\" for=\"city\">City</label>\n");
+      out.write("\n");
+      out.write("                                            <div class=\"col-xs-12 col-sm-9\">\n");
+      out.write("                                                    <select id=\"city\" name=\"city\" class=\"select2\" data-placeholder=\"Click to Choose...\">\n");
+      out.write("                                                            <option value=\"\">&nbsp;</option>\n");
+      out.write("                                                            <option value=\"Lahore\">Lahore</option>\n");
+      out.write("                                                            <option value=\"Multan\">Multan</option>\n");
+      out.write("                                                            <option value=\"Karachi\">Karachi</option>\n");
+      out.write("                                                            <option value=\"Islamabad\">Islamabad</option>\n");
+      out.write("                                                            <option value=\"Peshawar\">Peshawar</option>\n");
+      out.write("                                                            <option value=\"Quetta\">Quetta</option>\n");
+      out.write("                                                            <option value=\"Faisalabad\">Faisalabad</option>\n");
+      out.write("                                                    </select>\n");
+      out.write("                                            </div>\n");
+      out.write("                                    </div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"space-2\"></div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                            <label class=\"control-label col-xs-12 col-sm-3 no-padding-right\" for=\"phone\">Phone Number:</label>\n");
+      out.write("\n");
+      out.write("                                            <div class=\"col-xs-12 col-sm-9\">\n");
+      out.write("                                                    <div class=\"input-group\">\n");
+      out.write("                                                            <span class=\"input-group-addon\">\n");
+      out.write("                                                                    <i class=\"ace-icon fa fa-phone\"></i>\n");
+      out.write("                                                            </span>\n");
+      out.write("\n");
+      out.write("                                                            <input type=\"tel\" id=\"phone\" name=\"phone\" />\n");
+      out.write("                                                    </div>\n");
+      out.write("                                            </div>\n");
+      out.write("                                    </div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"space-2\"></div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                            <label class=\"control-label col-xs-12 col-sm-3 no-padding-right\" for=\"email\">Email Address:</label>\n");
+      out.write("\n");
+      out.write("                                            <div class=\"col-xs-12 col-sm-9\">\n");
+      out.write("                                                    <div class=\"clearfix\">\n");
+      out.write("                                                            <input type=\"email\" name=\"email\" id=\"email\" class=\"col-xs-12 col-sm-6\" />\n");
+      out.write("                                                    </div>\n");
+      out.write("                                            </div>\n");
+      out.write("                                    </div>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"space-2\"></div>\n");
+      out.write("                                    \n");
+      out.write("                                    <h4 style=\"color: greenyellow;float:right\" id=\"chk\">\n");
+      out.write("                                        ");
 
-                    
-                                                                try{    
-                                                                    Class.forName("com.mysql.jdbc.Driver");
-                                                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
-                                                                    Statement stmt = con.createStatement();
 
-                                                                    ResultSet a = stmt.executeQuery("select departure_date,time,from_id,to_id"
-                                                                                                   + "from flight_schedule");
-                                                                    while(a.next()){
-                                                            
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        
       out.write("\n");
-      out.write("                                                                                    \n");
-      out.write("                                                                <tr>\n");
-      out.write("                                                                        <td>\n");
-      out.write("                                                                            ");
-      out.print( a.getString("departure_date") );
-      out.write("\n");
-      out.write("                                                                            ");
-      out.print( a.getString("time") );
-      out.write("\n");
-      out.write("                                                                            ");
-      out.print( a.getString("from_id") );
-      out.write("\n");
-      out.write("                                                                            ");
-      out.print( a.getString("to_id") );
-      out.write("\n");
-      out.write("                                                                        </td>\n");
-      out.write("\n");
-      out.write("                                                                        <td>\n");
-      out.write("                                                                                <div class=\"hidden-sm hidden-xs btn-group\">\n");
-      out.write("                                                                                    \n");
-      out.write("                                                                                        <a href=\"update_admin?id='");
-      out.print( a.getString("id") );
-      out.write("'\" class=\"btn btn-primary btn-sm\"> <i class=\"ace-icon fa fa-edit\"> </i> </a>\n");
-      out.write("\n");
-      out.write("                                                                                        <a href=\"delete_admin?id='");
-      out.print( a.getString("id") );
-      out.write("'\" class=\"btn btn-danger btn-sm\"> <i class=\"ace-icon fa fa-trash-o\"> </i> </a>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                                                                                </div>\n");
-      out.write("                                                                        </td>\n");
-      out.write("                                                                </tr>\n");
-      out.write("                                                            \n");
-      out.write("                                                            ");
+      out.write("                                    </h4>\n");
+      out.write("                                    <h4 style=\"color: red;float:right\" id=\"chk\">\n");
+      out.write("                                        ");
 
-                                                                }   
-                                                                a.close();
-                                                                }catch(Exception e){
-                                                                     System.out.println("Can't connect to Database!");
-                                                                }
-                                                            
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        
       out.write("\n");
-      out.write("                                                </table>\n");
-      out.write("                                                \n");
-      out.write("                                                <div class=\"page-header\">\n");
-      out.write("                                                    <a href=\"addAdmin.jsp\"><h5>+ Add new Admin</h5></a>\n");
-      out.write("                                                </div><!-- /.page-header -->\n");
+      out.write("                                    </h4>\n");
+      out.write("\n");
+      out.write("                                    <div class=\"hr hr-dotted\"></div>\n");
+      out.write("                                    \n");
+      out.write("                                    \n");
+      out.write("                                    <div class=\"clearfix form-actions\">\n");
+      out.write("                                    <div class=\"col-md-offset-3 col-md-9\">\n");
+      out.write("                                            <button class=\"btn btn-info\" type=\"submit\">\n");
+      out.write("                                                    <i class=\"ace-icon fa fa-check bigger-110\"></i>\n");
+      out.write("                                                    Submit\n");
+      out.write("                                            </button>\n");
+      out.write("\n");
+      out.write("                                            &nbsp; &nbsp; &nbsp;\n");
+      out.write("                                            <button class=\"btn\" type=\"reset\">\n");
+      out.write("                                                    <i class=\"ace-icon fa fa-undo bigger-110\"></i>\n");
+      out.write("                                                    Reset\n");
+      out.write("                                            </button>\n");
+      out.write("                                    </div>\n");
+      out.write("                                    </div>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                            </form>   \n");
       out.write("\n");
       out.write("                                    <h4 style=\"color: greenyellow; float:right\" id=\"chk\">\n");
       out.write("                                        ");

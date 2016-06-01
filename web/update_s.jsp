@@ -1,3 +1,7 @@
+
+
+<%@page import="java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,7 +12,7 @@
             %>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - FT Airlines Admin</title>
+		<title>FT Airlines Admin Panel</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -63,7 +67,7 @@
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="Admin-Home.jsp" class="navbar-brand">
 						<small>
-							FT Airlines Admin
+							FT Airlines Admin Panel
 						</small>
 					</a>
 
@@ -184,382 +188,143 @@
 						<b class="arrow"></b>
 					</li>
 
-					
+                                        <li class="">
+						<a href="admins.jsp">
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text"> Manage Admins</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
 			</div><!-- /.main-content -->
 
 			<div class="page-content-area">
-						
+				
+                            <div class="row">
+                                    <div class="col-xs-9">
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="page-header">
+                                                    <h1>Manage Flight Schedule</h1>
+                                                </div><!-- /.page-header -->
+                                                
+                                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                                            <thead>
+                                                                    <tr>
+                                                                        <th>Departure Date</th>
+                                                                        <th>Departure Time</th>
+                                                                        <th>From City</th>
+                                                                        <th>To City</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                            </thead>
+                                                            
+                                                            <%
+                    
+                                                                try{    
+                                                                    Class.forName("com.mysql.jdbc.Driver");
+                                                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                    Statement stmt = con.createStatement();
 
-						<div class="row">
-							<div class="col-xs-9">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="row">
-									<div class="col-xs-12">
-										<table id="sample-table-1" class="table table-striped table-bordered table-hover">
-											<thead>
-												<tr>
-													
-													<th>Domain</th>
-													<th>Price</th>
-													<th class="hidden-480">Clicks</th>
+                                                                    ResultSet a = stmt.executeQuery("SELECT departure_date, time, from_id, to_id, flight_no from flight_schedule");
 
-													<th>
-														<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-														Update
-													</th>
-													<th class="hidden-480">Status</th>
 
-													<th></th>
-												</tr>
-											</thead>
+                                                                    while(a.next()){
+                                                            %>
+                                                                                    
+                                                                <tr>
+                                                                        <td><%= a.getString("departure_date") %></td>
+                                                                        <td><%= a.getString("time") %></td>
+                                                                        <td><%= a.getString("from_id") %></td>
 
-											<tbody>
-												<tr>
-													
-													<td>
-														<a href="#">ace.com</a>
-													</td>
-													<td>$45</td>
-													<td class="hidden-480">3,330</td>
-													<td>Feb 12</td>
+                                                                        <td><%= a.getString("to_id") %></td>
 
-													<td class="hidden-480">
-														<span class="label label-sm label-warning">Expiring</span>
-													</td>
+                                                                        <td>
+                                                                                <div class="hidden-sm hidden-xs btn-group">
+                                                                                    
+                                                                                        <a href="update_schedule?id='<%= a.getString("flight_no") %>'" class="btn btn-primary btn-sm"> <i class="ace-icon fa fa-edit"> </i> </a>
 
-													<td>
-														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
-																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
+                                                                                        <a href="delete_schedule?id='<%= a.getString("flight_no") %>'" class="btn btn-danger btn-sm"> <i class="ace-icon fa fa-trash-o"> </i> </a>
 
-															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
 
-															<button class="btn btn-xs btn-danger">
-																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
+                                                                                </div>
+                                                                        </td>
+                                                                </tr>
+                                                            
+                                                            <%
+                                                                }   
+                                                                a.close();
+                                                                }catch(Exception e){
+                                                                     System.out.println("Can't connect to Database!");
+                                                                }
+                                                            %>
+                                                </table>
+                                                
+                                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                                            <thead>
+                                                                    <tr>
+                                                                        <th>ID</th>
+                                                                        <th>City Name</th>
+                                                                        
+                                                                    </tr>
+                                                            </thead>
+                                                            
+                                                            <%
+                    
+                                                                try{    
+                                                                    Class.forName("com.mysql.jdbc.Driver");
+                                                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                    Statement stmt = con.createStatement();
 
-															<button class="btn btn-xs btn-warning">
-																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</button>
-														</div>
+                                                                    ResultSet a = stmt.executeQuery("select * from city");
 
-														<div class="hidden-md hidden-lg">
-															<div class="inline position-relative">
-																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-																</button>
 
-																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
+                                                                    while(a.next()){
+                                                            %>
+                                                                                    
+                                                                <tr>
+                                                                        <td>
+                                                                            <%= a.getString("id") %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= a.getString("name") %>
+                                                                        </td>
+                                                                        
+                                                                </tr>
+                                                            
+                                                            <%
+                                                                }   
+                                                                a.close();
+                                                                }catch(Exception e){
+                                                                     System.out.println("Can't connect to Database!");
+                                                                }
+                                                            %>
+                                                </table>
+                                                
+                                                <div class="page-header">
+                                                    <a href="add_schedule.jsp"><h5>+ Add new Flight Schedule</h5></a>
+                                                </div><!-- /.page-header -->
 
-																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
+                                    <h4 style="color: greenyellow; float:right" id="chk">
+                                        <%
 
-																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</td>
-												</tr>
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red; float:right" id="chk">
+                                        <%
 
-												<tr>
-													
-
-													<td>
-														<a href="#">base.com</a>
-													</td>
-													<td>$35</td>
-													<td class="hidden-480">2,595</td>
-													<td>Feb 18</td>
-
-													<td class="hidden-480">
-														<span class="label label-sm label-success">Registered</span>
-													</td>
-
-													<td>
-														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
-																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-danger">
-																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-warning">
-																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</button>
-														</div>
-
-														<div class="hidden-md hidden-lg">
-															<div class="inline position-relative">
-																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-																</button>
-
-																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</td>
-												</tr>
-
-												<tr>
-													
-													<td>
-														<a href="#">max.com</a>
-													</td>
-													<td>$60</td>
-													<td class="hidden-480">4,400</td>
-													<td>Mar 11</td>
-
-													<td class="hidden-480">
-														<span class="label label-sm label-warning">Expiring</span>
-													</td>
-
-													<td>
-														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
-																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-danger">
-																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-warning">
-																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</button>
-														</div>
-
-														<div class="hidden-md hidden-lg">
-															<div class="inline position-relative">
-																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-																</button>
-
-																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</td>
-												</tr>
-
-												<tr>
-													
-													<td>
-														<a href="#">best.com</a>
-													</td>
-													<td>$75</td>
-													<td class="hidden-480">6,500</td>
-													<td>Apr 03</td>
-
-													<td class="hidden-480">
-														<span class="label label-sm label-inverse arrowed-in">Flagged</span>
-													</td>
-
-													<td>
-														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
-																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-danger">
-																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-warning">
-																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</button>
-														</div>
-
-														<div class="hidden-md hidden-lg">
-															<div class="inline position-relative">
-																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-																</button>
-
-																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</td>
-												</tr>
-
-												<tr>
-													
-
-													<td>
-														<a href="#">pro.com</a>
-													</td>
-													<td>$55</td>
-													<td class="hidden-480">4,250</td>
-													<td>Jan 21</td>
-
-													<td class="hidden-480">
-														<span class="label label-sm label-success">Registered</span>
-													</td>
-
-													<td>
-														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
-																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-info">
-																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-danger">
-																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-warning">
-																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</button>
-														</div>
-
-														<div class="hidden-md hidden-lg">
-															<div class="inline position-relative">
-																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-																</button>
-
-																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div><!-- /.span -->
-								</div><!-- /.row -->
-                                                                 </div><!-- /.page-content-area -->
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
+                                </div><!-- /.span -->
+                        </div><!-- /.row -->
+                         </div><!-- /.page-content-area -->
                     </div><!-- /.page-content -->
             </div><!-- /.main-content -->
 

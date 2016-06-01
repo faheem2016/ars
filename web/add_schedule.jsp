@@ -1,3 +1,6 @@
+
+<%@page import="java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -166,7 +169,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="active">
+					<li class="">
 						<a href="booking.jsp">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Seats Reservation</span>
@@ -184,7 +187,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
+                                        <li class="active">
 						<a href="admins.jsp">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text"> Manage Admins</span>
@@ -193,6 +196,172 @@
 						<b class="arrow"></b>
 					</li>
 			</div><!-- /.main-content -->
+
+			<div class="page-content-area">
+				
+                            <div class="row">
+                                    <div class="col-xs-9">
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="page-header">
+                                                    <h1>Manage Flight Schedule</h1>
+                                                </div><!-- /.page-header -->
+                                                
+                                                <!-- PAGE CONTENT BEGINS -->
+                            <h3 class="lighter block green">Enter the following information</h3>
+                                           
+                            <form class="form-horizontal" id="validation-form" action="add_schedule" method="get">
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="date">Depart Date:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="date" id="date" name="date" class="col-xs-12 col-sm-5" />
+                                                    </div>
+                                            </div>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="time">Depart Time:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="time" id="time" name="time" class="col-xs-12 col-sm-5" />
+                                                            
+                                                            
+                                                    </div>
+                                            </div>
+                                    </div>
+                                                    
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="from">From:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="from">
+                                                                <option value="">Select a City</option>
+                                                                <%
+                    
+                                                                    try{    
+                                                                        Class.forName("com.mysql.jdbc.Driver");
+                                                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                        Statement stmt = con.createStatement();
+
+                                                                        ResultSet a = stmt.executeQuery("select name, id from city");
+                                                                        while(a.next()){
+                                                                %>
+                                                                    <option value="<%= a.getString("id") %>"> <%= a.getString("name") %> </option>
+                                                        
+                                                                <%
+                                                                }   
+                                                                    a.close();
+                                                                    }catch(Exception e){
+                                                                         System.out.println("Can't connect to Database!");
+                                                                }
+                                                                %>
+
+                                                            </select>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                                    
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="to">To:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="to">
+                                                                <option value="">Select a City</option>
+                                                                <%
+                    
+                                                                    try{    
+                                                                        Class.forName("com.mysql.jdbc.Driver");
+                                                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                        Statement stmt = con.createStatement();
+
+                                                                        ResultSet a = stmt.executeQuery("select name, id from city");
+                                                                        while(a.next()){
+                                                                %>
+                                                                    <option value="<%= a.getString("id") %>"> <%= a.getString("name") %> </option>
+                                                        
+                                                                <%
+                                                                }   
+                                                                    a.close();
+                                                                    }catch(Exception e){
+                                                                         System.out.println("Can't connect to Database!");
+                                                                }
+                                                                %>
+
+                                                            </select>
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                    
+
+                                    <div class="space-2"></div>
+                                    
+                                    <h4 style="color: greenyellow;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red;float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
+
+                                    <div class="hr hr-dotted"></div>
+                                    
+                                    
+                                    <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-info" type="submit">
+                                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                                    Submit
+                                            </button>
+
+                                            &nbsp; &nbsp; &nbsp;
+                                            <button class="btn" type="reset">
+                                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                    Reset
+                                            </button>
+                                    </div>
+                                    </div>
+
+
+                            </form>   
+
+                                    <h4 style="color: greenyellow; float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("success") != null){
+                                                out.println(request.getAttribute("success"));
+                                            }
+                                        %>
+                                    </h4>
+                                    <h4 style="color: red; float:right" id="chk">
+                                        <%
+
+                                            if(request.getAttribute("error") != null){
+                                                out.println(request.getAttribute("error"));
+                                            }
+                                        %>
+                                    </h4>
+                                </div><!-- /.span -->
+                        </div><!-- /.row -->
+                         </div><!-- /.page-content-area -->
+                    </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
 
 			<div class="footer">
 				<div class="footer-inner">
@@ -229,6 +398,7 @@
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
+
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
@@ -479,6 +649,8 @@
 			
 			})
 		</script>
+
+
 
 		<!-- the following scripts are used in demo only for onpage help and you don't need them -->
 		<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />

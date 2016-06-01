@@ -403,8 +403,7 @@
             <div class="Contactside">
                 <div class="Center">
                     <h2>contact us</h2>
-                    <p>Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum<br>
-                    feugiat velit mauris egestas quamut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
+                    <p>Feel free to contact us.</p>
                     <div class="Line"></div>
                 </div>  
 
@@ -412,7 +411,7 @@
 
                 <div class="Map">
                 
-                    <div id="GoogleMap"></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.5892566461353!2d74.26301031467304!3d31.48048325626134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903ccac08143b%3A0x9b0637753efd261e!2sPUCIT-New+Campus+(New+Building)!5e0!3m2!1sen!2s!4v1464556285562" width="1800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
                 
                 </div>
                 
