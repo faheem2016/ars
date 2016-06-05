@@ -34,13 +34,13 @@ int flag1 = 0, flag2 = 0, flag3 = 0;
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String from = request.getParameter("from");
-        String to = request.getParameter("to");
+        String fromID = request.getParameter("from");
+        String toID = request.getParameter("to");
         String date = request.getParameter("date");
-        boolean check = compare(from,to,date);
+        boolean check = compare(fromID,toID,date);
         
             if (check == true) {
-            response.sendRedirect("booking.html");
+            response.sendRedirect("booking.jsp");
             } else {
                 request.setAttribute("error", "Flight is not currently available for this route!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -55,11 +55,11 @@ int flag1 = 0, flag2 = 0, flag3 = 0;
           // check from       
          try{
              
-                ResultSet a = con.stmt.executeQuery("SELECT name  FROM flight_schedule where from_name='"+from+"'");
+                ResultSet a = con.stmt.executeQuery("SELECT * FROM flight_schedule where from_id='"+from+"' AND to_id='"+to+"'AND departure_date='"+date+"'");
                 
                 if(a.next())
                 {
-                    flag1=1;
+                    return true;
                 }
                 
 
@@ -68,42 +68,7 @@ int flag1 = 0, flag2 = 0, flag3 = 0;
                 System.out.println(e); 
             }
          
-         // check to       
-         try{
-                ResultSet a = con.stmt.executeQuery("SELECT to_name from flight_schedule where to_name='"+to+"'");
-                
-                
-                 if(a.next())
-                {
-                    flag2=1;
-                }
-                
-
-        }catch(SQLException e)
-            {
-                System.out.println(e); 
-            }
-         
-         // check to       
-         try{
-                ResultSet a = con.stmt.executeQuery("SELECT depart_date FROM flight_schedule where depart_date='"+date+"'");
-                
-                
-                if(a.next())
-                {
-                    flag3=1;
-                }
-                
-
-        }catch(SQLException e)
-            {
-                System.out.println(e); 
-            }
-         
-         if ((flag1 == 1) && (flag2 == 1)&& (flag3== 1) ) {
-            return true;
-        } else
-            return false;
+        return false;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

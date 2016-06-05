@@ -64,20 +64,14 @@
 	                var letters = /^[A-Za-z]+$/;
 	                var blank = "";
 
-	                if (to == blank) {
-		        	document.getElementById("chk").innerHTML = "Invalid Entries";
-	                        return false;
-		        	} else if (!to.match(letters)) {
-		        	document.getElementById("chk").innerHTML  = "Only letters are allowed!";
-		        	return false;
-		        	}
+                                if (to == blank) {
+                                document.getElementById("chk").innerHTML = "Invalid Entries";
+                                return false;
+                                }
 
 		        	if (from == blank) {
 		        	document.getElementById("chk").innerHTML = "Invalid Entries";
 	                        return false;
-		        	} else if (!from.match(letters)) {
-		        	document.getElementById("chk").innerHTML = "Only letters are allowed!";
-		        	return false;
 		        	}
 
 		        	if (date == blank) {
@@ -322,10 +316,10 @@
                                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                         Statement stmt = con.createStatement();
 
-                                                                        ResultSet a = stmt.executeQuery("select name from city");
+                                                                        ResultSet a = stmt.executeQuery("select name, id from city");
                                                                         while(a.next()){
                                                                 %>
-                                                                    <option value="<%= a.getString("name") %>"> <%= a.getString("name") %> </option>
+                                                                    <option value="<%= a.getString("id") %>"> <%= a.getString("name") %> </option>
                                                         
                                                                 <%
                                                                 }   
@@ -353,10 +347,10 @@
                                                                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                         Statement stmt = con.createStatement();
 
-                                                                        ResultSet a = stmt.executeQuery("select name from city");
+                                                                        ResultSet a = stmt.executeQuery("select name, id from city");
                                                                         while(a.next()){
                                                                 %>
-                                                                    <option value="<%= a.getString("name") %>"> <%= a.getString("name") %> </option>
+                                                                    <option value="<%= a.getString("id") %>"> <%= a.getString("name") %> </option>
                                                         
                                                                 <%
                                                                 }   
@@ -379,7 +373,7 @@
                                         </div>
                                         <div class="clearfix form-actions">
                                                 <div class="col-md-offset-3 col-md-6">
-                                                    <button id="btn1" class="btn btn-info" type="submit">
+                                                    <button id="btn1" class="btn btn-info" type="submit" >
                                                                 <i class="ace-icon fa fa-check bigger-110"></i>
                                                                 Search
                                                         </button>
@@ -495,32 +489,25 @@
                     <div class="Mid">					
                         <!-- \\ Begin Left Side \\ -->
                         <div class="Leftside">
-                            <form action="#">
-                                <fieldset>
-                                    <p><input type="text" value="" placeholder="NAME" class="field"></p>
-                                    <p><input type="email" value="" placeholder="EMAIL" class="field"></p>
-                                    <p><input type="text" value="" placeholder="TITLE" class="field"></p>
-                                    <p><textarea cols="2"  rows="2" placeholder="MESSAGE"></textarea></p>
-                                    <p><input type="submit" value="send" class="button"></p>
-                                </fieldset>
-                            </form>
+                            
+                            <img src="img/logo.png" >
                         </div>
                         <!-- // End Left Side // -->
                         <!-- \\ Begin Right Side \\ -->
                         <div class="Rightside">
                             <h3>Get in touch !</h3>
                                 <address>
-                                    990 Proin Gravida Street, Aliquet Snean Tate,<br>Lincoln Way, San Francisco, California.
+                                    Syed Kabir Ali Shah Road<br> Lahore, Pakistan.
                                 </address>	
                                 <address class="Number">
-                                    (+001) 001 002 0034, (+002) 009 008 0760<br>(+003) 456 050 0670 
+                                    (+92) 346 474 3213, (+92) 312 474 0539<br>(+92) 308 209 7852 
                                 </address>	
                                 <address class="Email">
-                                    <a href="mailto:info@november.com">info@november.com</a>
+                                    <a href="#">faheemajmal2014@gmail.com</a>
                                 </address>	
                                 <div class="clear"></div>
                                 <ul>
-                                    <li><a rel="nofollow" href="http://www.facebook.com/templatemo"
+                                    <li><a rel="nofollow" href="http://www.facebook.com"
                                    target="_parent"><img src="img/facebook-icn.png" alt="image"></a></li>
                                     <li><a href="#"><img src="img/twitter-icn.png" alt="image"></a></li>
                                     <li><a href="#"><img src="img/google-plus-icn.png" alt="image"></a></li>
@@ -531,7 +518,7 @@
                     <!-- \\ Begin Footer \\-->
                     <footer>
                         <div class="Cntr">                
-                            <p>COPYRIGHT © 2084 COMPANY NAME. DESIGN: <a rel="nofollow" href="http://www.templatemo.com" target="_parent">TEMPLATEMO</a></p>
+                            <p>COPYRIGHT © 2016 FT AIRLINES</p>
                         </div>
                     </footer>
                     <!-- // End Footer // -->
