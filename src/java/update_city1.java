@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Faheem
  */
-@WebServlet(urlPatterns = {"/add_schedule"})
-public class add_schedule extends HttpServlet {
+@WebServlet(urlPatterns = {"/update_city1"})
+public class update_city1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +32,16 @@ public class add_schedule extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String id=request.getParameter("id");
+        String name=request.getParameter("city");
         
-        String date=request.getParameter("date");
-        String time=request.getParameter("time");
-        String from=request.getParameter("from");
-        String to=request.getParameter("to");
-        String fare=request.getParameter("fare");
         DB con=new DB();
-         try
+        try
             {
 
-                con.stmt.execute("INSERT INTO flight_schedule (departure_date, time, from_id, to_id, fare) "
-                        + "VALUES('"+date+"','"+ time +"','"+ from +"','"+ to +"','"+ fare +"')");
-                request.setAttribute("success", "New schedule successfully Added!");
+                con.stmt.execute("UPDATE city set name='"+name+"'"
+                        + "where id = "+ id +"");
+                request.setAttribute("success", "City successfully updated!");
                 request.getRequestDispatcher("update_s.jsp").forward(request, response);
             }
             catch(SQLException e)
@@ -53,7 +50,6 @@ public class add_schedule extends HttpServlet {
                 request.setAttribute("error", e);
                 request.getRequestDispatcher("update_s.jsp").forward(request, response);
             }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

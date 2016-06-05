@@ -10,6 +10,11 @@
     <!-- <<Attched Stylesheets>> -->
     <link rel="stylesheet" href="css/theme.css" type="text/css" />
     <link rel="stylesheet" href="css/media.css" type="text/css" />
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
@@ -384,16 +389,86 @@
                                                                 <i class="ace-icon fa fa-undo bigger-110"></i>
                                                                 Reset
                                                         </button>
-                                                </div>
+                                                        <!-- Trigger the modal with a button -->
+                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">View Flight Schedule</button>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="myModal" role="dialog">
+                                                          <div class="modal-dialog">
+
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Flight Schedule</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                  
+                                                                    <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                                                          <thead>
+                                                                                  <tr>
+                                                                                      <th>Departure Date</th>
+                                                                                      <th>Departure Time</th>
+                                                                                      <th>From City</th>
+                                                                                      <th>To City</th>
+                                                                                      <th>Fare</th>
+                                                                                  </tr>
+                                                                          </thead>
+
+                                                                          <%
+
+                                                                              try{    
+                                                                                  Class.forName("com.mysql.jdbc.Driver");
+                                                                                  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
+                                                                                  Statement stmt = con.createStatement();
+
+                                                                                  ResultSet a = stmt.executeQuery("SELECT departure_date, TIME, a.name, b.name ,fare, flight_no "
+                                                                                          + "FROM flight_schedule, city AS a, city AS b "
+                                                                                          + "WHERE from_id = a.id AND to_id = b.id");
+
+
+                                                                                  while(a.next()){
+                                                                          %>
+
+                                                                              <tr>
+                                                                                      <td><%= a.getString("departure_date") %></td>
+                                                                                      <td><%= a.getString("time") %></td>
+                                                                                      <td><%= a.getString("a.name") %></td>
+
+                                                                                      <td><%= a.getString("b.name") %></td>
+                                                                                      <td><%= a.getString("fare") %></td>
+
+                                                                              </tr>
+
+                                                                          <%
+                                                                              }   
+                                                                              a.close();
+                                                                              }catch(Exception e){
+                                                                                   System.out.println("Can't connect to Database!");
+                                                                              }
+                                                                          %>
+                                                              </table>
+                                                                  
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                              </div>
+                                                            </div>
+
+                                                          </div>
+                                                        </div>
+
+                                                      </div>
+                                                
                                         </div>
                                 </form>
 
 
                         </div>
-                </div>
+                </div>                               
             </div><!-- /.span -->
         </div><!-- /.row -->
-
+        
 
             </div>
         </div>

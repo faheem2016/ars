@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Faheem
  */
-@WebServlet(urlPatterns = {"/add_schedule"})
-public class add_schedule extends HttpServlet {
+@WebServlet(urlPatterns = {"/add_city"})
+public class add_city extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,28 +32,23 @@ public class add_schedule extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String name=request.getParameter("city");
         
-        String date=request.getParameter("date");
-        String time=request.getParameter("time");
-        String from=request.getParameter("from");
-        String to=request.getParameter("to");
-        String fare=request.getParameter("fare");
         DB con=new DB();
          try
             {
 
-                con.stmt.execute("INSERT INTO flight_schedule (departure_date, time, from_id, to_id, fare) "
-                        + "VALUES('"+date+"','"+ time +"','"+ from +"','"+ to +"','"+ fare +"')");
-                request.setAttribute("success", "New schedule successfully Added!");
+                con.stmt.execute("INSERT INTO city(name)"
+                        + "VALUES('"+name+"')");
+                request.setAttribute("success", "New city successfully Added!");
                 request.getRequestDispatcher("update_s.jsp").forward(request, response);
             }
             catch(SQLException e)
             {
                 System.out.println(e);
-                request.setAttribute("error", e);
+                request.setAttribute("error", "New city not successfully Added!");
                 request.getRequestDispatcher("update_s.jsp").forward(request, response);
             }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

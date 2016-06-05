@@ -37,12 +37,12 @@ public class update_schedule1 extends HttpServlet {
         String time=request.getParameter("time");
         String from=request.getParameter("from");
         String to=request.getParameter("to");
-        
+        String fare=request.getParameter("fare");
         DB con=new DB();
         try
             {
 
-                con.stmt.execute("UPDATE flight_schedule set departure_date='"+date+"', time='"+time+"', from_id='"+from+"', to_id='"+to+"' "
+                con.stmt.execute("UPDATE flight_schedule set departure_date='"+date+"', time='"+time+"', from_id='"+from+"', to_id='"+to+"', fare='"+fare+"' "
                         + "where flight_no = "+ id +"");
                 request.setAttribute("success", "Schedule successfully updated!");
                 request.getRequestDispatcher("update_s.jsp").forward(request, response);

@@ -140,18 +140,11 @@
 				</script>
 
 				<ul class="nav nav-list">
-					<li class="active">
-						<a href="Admin-Home.jsp">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
+					
 
 					<li class="">
 						<a href="update_s.jsp">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Update Schedule </span>
 						</a>
 						<b class="arrow"></b>
@@ -195,6 +188,8 @@
 
 					
 			</div><!-- /.main-content -->
+                        
+                        <div><h2 class="text-primary text-center" >Welcome to Admin Panel<br><small>Please select an option from side bar to continue</small></h2></div>
 
 			<div class="footer">
 				<div class="footer-inner">

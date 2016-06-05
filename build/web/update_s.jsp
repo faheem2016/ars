@@ -144,18 +144,10 @@
 				</script>
 
 				<ul class="nav nav-list">
-					<li class="">
-						<a href="Admin-Home.jsp">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
+					
 					<li class="active">
 						<a href="update_s.jsp">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Update Schedule </span>
 						</a>
 						<b class="arrow"></b>
@@ -216,6 +208,7 @@
                                                                         <th>Departure Time</th>
                                                                         <th>From City</th>
                                                                         <th>To City</th>
+                                                                        <th>Fare</th>
                                                                         <th>Actions</th>
                                                                     </tr>
                                                             </thead>
@@ -227,7 +220,9 @@
                                                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                     Statement stmt = con.createStatement();
 
-                                                                    ResultSet a = stmt.executeQuery("SELECT departure_date, time, from_id, to_id, flight_no from flight_schedule");
+                                                                    ResultSet a = stmt.executeQuery("SELECT d.departure_date, d.TIME, a.name, b.name , d.fare,  d.flight_no"
+                                                                            + " FROM flight_schedule AS d, city AS a, city AS b"
+                                                                            + " WHERE d.from_id = a.id AND d.to_id = b.id");
 
 
                                                                     while(a.next()){
@@ -236,10 +231,9 @@
                                                                 <tr>
                                                                         <td><%= a.getString("departure_date") %></td>
                                                                         <td><%= a.getString("time") %></td>
-                                                                        <td><%= a.getString("from_id") %></td>
-
-                                                                        <td><%= a.getString("to_id") %></td>
-
+                                                                        <td><%= a.getString("a.name") %></td>
+                                                                        <td><%= a.getString("b.name") %></td>
+                                                                        <td><%= a.getString("fare") %></td>
                                                                         <td>
                                                                                 <div class="hidden-sm hidden-xs btn-group">
                                                                                     
@@ -261,12 +255,15 @@
                                                             %>
                                                 </table>
                                                 
+                                                <div class="page-header">
+                                                    <a href="add_schedule.jsp"><h5>+ Add new Flight Schedule</h5></a>
+                                                </div><!-- /.page-header -->
+                                                
                                                 <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                                                             <thead>
                                                                     <tr>
-                                                                        <th>ID</th>
                                                                         <th>City Name</th>
-                                                                        
+                                                                        <th>Actions</th>
                                                                     </tr>
                                                             </thead>
                                                             
@@ -277,18 +274,26 @@
                                                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root", "root");
                                                                     Statement stmt = con.createStatement();
 
-                                                                    ResultSet a = stmt.executeQuery("select * from city");
+                                                                    ResultSet a = stmt.executeQuery("select name, id from city");
 
 
                                                                     while(a.next()){
                                                             %>
                                                                                     
                                                                 <tr>
-                                                                        <td>
-                                                                            <%= a.getString("id") %>
-                                                                        </td>
+                                                                        
                                                                         <td>
                                                                             <%= a.getString("name") %>
+                                                                        </td>
+                                                                        <td>
+                                                                                <div class="hidden-sm hidden-xs btn-group">
+                                                                                    
+                                                                                        <a href="update_city?id='<%= a.getString("id") %>'" class="btn btn-primary btn-sm"> <i class="ace-icon fa fa-edit"> </i> </a>
+
+                                                                                        <a href="delete_city?id='<%= a.getString("id") %>'" class="btn btn-danger btn-sm"> <i class="ace-icon fa fa-trash-o"> </i> </a>
+
+
+                                                                                </div>
                                                                         </td>
                                                                         
                                                                 </tr>
@@ -301,10 +306,10 @@
                                                                 }
                                                             %>
                                                 </table>
-                                                
-                                                <div class="page-header">
-                                                    <a href="add_schedule.jsp"><h5>+ Add new Flight Schedule</h5></a>
+                                                 <div class="page-header">
+                                                    <a href="add_city.jsp"><h5>+ Add new City</h5></a>
                                                 </div><!-- /.page-header -->
+                                                
 
                                     <h4 style="color: greenyellow; float:right" id="chk">
                                         <%

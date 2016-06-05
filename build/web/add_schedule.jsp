@@ -143,18 +143,11 @@
 				</script>
 
 				<ul class="nav nav-list">
-					<li class="">
-						<a href="Admin-Home.jsp">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
-						</a>
+					
 
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
+					<li class="active">
 						<a href="update_s.jsp">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Update Schedule </span>
 						</a>
 						<b class="arrow"></b>
@@ -187,7 +180,7 @@
 						<b class="arrow"></b>
 					</li>
 
-                                        <li class="active">
+                                        <li class="">
 						<a href="admins.jsp">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text"> Manage Admins</span>
@@ -295,6 +288,18 @@
                                                                 %>
 
                                                             </select>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                                                
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="fare">Fare:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="number" id="fare" name="fare" class="col-xs-12 col-sm-5" />
+                                                            
+                                                            
                                                     </div>
                                             </div>
                                     </div>
