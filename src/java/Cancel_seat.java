@@ -32,33 +32,40 @@ public class Cancel_seat extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String t_no=request.getParameter("ticketNo"); 
-        String pas_id="";
+        String t_no = request.getParameter("ticketNo");
+        String charge = request.getParameter("charge");
+        String pas_id = "";
+        String flight_no = "";
         DB con=new DB();
         DB con1=new DB();
         DB con2=new DB();
         try 
         {
-            con.rs=con.stmt.executeQuery("select pas_tno,pas_id from booked_seats where pas_tno='"+t_no+"'");
+            con.rs=con.stmt.executeQuery("select seat,pas_id, flight_no from booked_seats where seat='"+t_no+"'");
             if(con.rs.next())
             {
-                pas_id=con.rs.getString("pas_id");
+                pas_id = con.rs.getString("pas_id");
+                flight_no = con.rs.getString("flight_no");
                 try
                 {
-                    con1.stmt.execute("insert into cancelation_detail(pas_id,pas_tno)"
-                            + " values('"+pas_id+"','"+t_no+"')");
+                    con1.stmt.execute("insert into cancelation_detail(pas_id,seat,flight_no,cancel_date,cancel_charge)"
+                            + " values('"+pas_id+"','"+t_no+"','"+flight_no+"',sysdate, '"+charge+"')");
                     try
                     {
-                        con1.stmt.execute("delete from booked_seats where pas_tno='"+t_no+"'");
+                        con1.stmt.execute("delete from booked_seats where seat='"+t_no+"'");
                     }
                     catch(SQLException e)
                     {
                         System.out.println(e);
+                        request.setAttribute("error", "111  " +e);
+                request.getRequestDispatcher("seats_c.jsp").forward(request, response);;
                     }
                 }
                 catch(SQLException e)
                 {
                     System.out.println(e);
+                    request.setAttribute("error", "222  " +e);
+                request.getRequestDispatcher("seats_c.jsp").forward(request, response);;
                 }
                 
                 request.setAttribute("success", "Ticket has been successfully Deleted!");
@@ -72,20 +79,10 @@ public class Cancel_seat extends HttpServlet {
         }
         catch (SQLException e)
         {
-            System.out.println(e);
+            request.setAttribute("error", e);
+                request.getRequestDispatcher("seats_c.jsp").forward(request, response);;
         }
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Cancel_seat</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Cancel_seat at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

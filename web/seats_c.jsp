@@ -204,11 +204,23 @@
                                                     <div class="clearfix">
                                                             <input type="text" id="ticketNo" name="ticketNo" class="col-xs-12 col-sm-5" />
                                                     </div>
+                                                    
                                             </div>
+                                            
                                     </div>
                                 
-                                   
+                                    <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="charge">Price will be charge:</label>
 
+                                            <div class="col-xs-12 col-sm-9">
+                                                    <div class="clearfix">
+                                                            <input type="text" id="charge" name="charge" value="2000" disabled="" class="col-xs-12 col-sm-2" />
+                                                            <strong>Rs/-</strong>
+                                                    </div>
+                                                    
+                                            </div>
+                                            
+                                    </div>
                                     <div class="space-2"></div>
                                     
                                     <h4 style="color: greenyellow; float:right" id="chk">
