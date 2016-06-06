@@ -218,42 +218,20 @@
                                     </div>
 
                                     <div class="space-2"></div>
-
+                                    
                                     <div class="form-group">
-                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="city">City</label>
+
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="phone">Enter Phone Number:</label>
 
                                             <div class="col-xs-12 col-sm-9">
-                                                    <select id="city" name="city" class="select2" data-placeholder="Click to Choose...">
-                                                            <option value="">&nbsp;</option>
-                                                            <option value="Lahore">Lahore</option>
-                                                            <option value="Multan">Multan</option>
-                                                            <option value="Karachi">Karachi</option>
-                                                            <option value="Islamabad">Islamabad</option>
-                                                            <option value="Peshawar">Peshawar</option>
-                                                            <option value="Quetta">Quetta</option>
-                                                            <option value="Faisalabad">Faisalabad</option>
-                                                    </select>
+                                                <div class="clearfix">
+                                                    <input type="number" name="phone" id="phone" class="col-xs-12 col-sm-4" value=""/>
+                                                </div>
                                             </div>
-                                    </div>
+                                        </div>	
 
                                     <div class="space-2"></div>
-
-                                    <div class="form-group">
-                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="phone">Phone Number:</label>
-
-                                            <div class="col-xs-12 col-sm-9">
-                                                    <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                    <i class="ace-icon fa fa-phone"></i>
-                                                            </span>
-
-                                                            <input type="tel" id="phone" name="phone" />
-                                                    </div>
-                                            </div>
-                                    </div>
-
-                                    <div class="space-2"></div>
-
+                                    
                                     <div class="form-group">
                                             <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">Email Address:</label>
 
@@ -263,6 +241,29 @@
                                                     </div>
                                             </div>
                                     </div>
+                                    
+                                    <div class="form-group">
+
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="accno">Enter Account No:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                <div class="clearfix">
+                                                    <input type="number" name="accno" id="accno" class="col-xs-12 col-sm-4" value=""/>
+                                                </div>
+                                            </div>
+                                        </div>	
+
+                                         <div class="space-2"></div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="pass">Enter Password:</label>
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                <div class="clearfix">
+                                                    <input type="password" name="pass" id="pass" class="col-xs-12 col-sm-4" value=""/>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     <div class="space-2"></div>
                                     

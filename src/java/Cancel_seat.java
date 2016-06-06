@@ -33,7 +33,6 @@ public class Cancel_seat extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String t_no = request.getParameter("ticketNo");
-        String charge = request.getParameter("charge");
         String pas_id = "";
         String flight_no = "";
         DB con=new DB();
@@ -49,7 +48,7 @@ public class Cancel_seat extends HttpServlet {
                 try
                 {
                     con1.stmt.execute("insert into cancelation_detail(pas_id,seat,flight_no,cancel_date,cancel_charge)"
-                            + " values('"+pas_id+"','"+t_no+"','"+flight_no+"',sysdate, '"+charge+"')");
+                            + " values('"+pas_id+"','"+t_no+"','"+flight_no+"',SYSDATE(), '"+2000+"')");
                     try
                     {
                         con1.stmt.execute("delete from booked_seats where seat='"+t_no+"'");
@@ -64,7 +63,7 @@ public class Cancel_seat extends HttpServlet {
                 catch(SQLException e)
                 {
                     System.out.println(e);
-                    request.setAttribute("error", "222  " +e);
+                    request.setAttribute("error", "222  "+e);
                 request.getRequestDispatcher("seats_c.jsp").forward(request, response);;
                 }
                 

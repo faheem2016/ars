@@ -54,7 +54,7 @@
 
         <!-- ace settings handler -->
         <script src="assets/js/ace-extra.min.js"></script>
-
+        
         <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
         <!--[if lte IE 8]>
@@ -110,8 +110,9 @@
                             <div class="step-pane active" id="step1" style="height: 400px; background: url('img/seating-plan.png'); background-size: 1300px 520px; background-repeat: no-repeat;">
                                 <div style=" height: 47%; width: 55%; margin-left: 25%; margin-top: 9% ">
                                     <form id="seats" action="" method="POST" >
-                                        <input type="hidden" value="<% out.print(request.getAttribute("flight_no")); %>" id="flight_no">
+                                        <input type="hidden" value="<% out.print(request.getAttribute("flight_no")); %>" id="flight_no" name="flight_no">
                                         <input type="hidden" value="" id="_seat">
+                                        
                                         <table style="margin-left: 30px;margin-top: 50px">
                                             <tr>
                                                 <%
@@ -144,7 +145,7 @@
 
                                             %>
                                             <td>
-                                                <input type="button" style="height: 25px; width: 25px;" id="seat_<%= i%>" onclick="checkSeatAvailability('<%= i%>')" value="<%= i%>" disabled="disabled">
+                                                <input type="button" style="height: 25px; width: 25px;color: red" id="seat_<%= i%>"  value="<%= i%>" disabled="disabled">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </td>
                                             <%
@@ -228,7 +229,7 @@
                             <div class="step-pane" id="step3">
 
                                 <div class="center">
-                                    <form class="form-horizontal" id="validation-form1" method="get">
+                                    <form class="form-horizontal" id="validation-form1" method="get" onsubmit="ajaxfunction()">
                                         <div class="form-group">
 
                                             <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="accno">Enter Account No:</label>
@@ -258,11 +259,11 @@
 
                             <div class="step-pane" id="step4">
                                 <div class="center">
-                                    <!--                                    <h3 class="green">Congrats!</h3>
-                                                                        Your ticket has been reserved! Click finish to go back!
+                                    <!--                                <h3 class="green">Congrats!</h3>
+                                                                     Your tt has been reserved! Click finish to go back!
                                                                         <br><br><br>
                                                                         <table>
-                                    
+                               
                                                                         </table>
                                     
                                                                         <button class="btn" type="button">
@@ -290,8 +291,34 @@
                                         <tr>
                                             <td><b>Seat</b></td>
                                             <td id="pass_seat"></td>
+                                            
                                         </tr>
-                                    </table>
+                                          <tr>
+                                            <td><b>From</b></td>
+                                            <td><% out.print(request.getAttribute("from_city")); %></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td><b>To</b></td>
+                                            <td><% out.print(request.getAttribute("to_city")); %></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td><b>departure date</b></td>
+                                            <td><% out.print(request.getAttribute("departure_date")); %></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td><b>departure time</b></td>
+                                            <td><% out.print(request.getAttribute("time")); %></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td><b>Fare</b></td>
+                                            <td><% out.print(request.getAttribute("fare")); %></td>
+                                            
+                                        </tr>
+                                 </table>
                                 </div>
                             </div>
                         </div>
@@ -333,6 +360,7 @@
 window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+               
             <script type="text/javascript">
                 if ('ontouchstart' in document.documentElement)
                     document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
@@ -395,6 +423,11 @@ window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<
                                     var email = $("#email").val();
                                     var phone = $("#phone").val();
                                     var seat_no = $("#_seat").val();
+
+                                                    
+                                                    
+                               
+                                    
                                     $("#pass_name").html(name);
 
                                     var accno = $("#accno").val();
@@ -403,6 +436,7 @@ window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<
                                     $("#pass_accno").html(accno);
                                     $("#pass_seat").html(seat_no);
                                     console.log("here in step 4");
+                                    
 
                                 }
                             })
@@ -701,5 +735,6 @@ window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<
                     });
                 }
             </script>
+         
     </body>
 </html>

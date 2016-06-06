@@ -123,10 +123,7 @@
                                 <a href="#about">About</a>
                                 <span class="menu-item-bg"></span>
                             </li>
-                            <li>
-                                <a href="#services">Services</a>
-                                <span class="menu-item-bg"></span>
-                            </li>
+                            
                             <li>
                                 <a href="#booking">Ticket Booking</a>
                                 <span class="menu-item-bg"></span>
@@ -202,7 +199,7 @@
                     <!-- \\ Begin Tab side \\ -->
                     <div class="Tabside">
                         <ul>
-                            <li><a href="javascript:;" class="tabLink activeLink" id="cont-1">Mision</a></li>
+                            <li><a href="javascript:;" class="tabLink activeLink" id="cont-1">Mission</a></li>
                             <li><a href="javascript:;" class="tabLink" id="cont-2">vision</a></li>
                             <li><a href="javascript:;" class="tabLink" id="cont-3">Sponsors</a></li>
                         </ul>
@@ -217,9 +214,10 @@
                                 </div>
                             </div>
                             <div class="Description">
-                                <h3>Sed ac urna sit amet lorem<span>taciti sociosqu ad litora torquent per conubia</span></h3>
-                                <p>November is free HTML CSS website template from <span class="cyan">templatemo</span> and you can download and use it for any purpose. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit nunc, porta commodo euismod eu, fermentum a neque. Fusce scelerisque tincidunt auctor. Integer varius ullamcorper interdum.</p>
-                                <p>Phasellus pretium elementum rhoncus. Aenean sit amet odio eu ante volutpat rutrum. Vestibulum ullamcorper faucibus orci, in blandit massa fringilla at. Nulla in fermentum eros. Suspendisse vitae aliquam metus.</p>
+                                <h3><span>Mission</span></h3>
+                                <p>Our mission is to provide quality service in economy prices. We are the first Pakistani Airline Company to introduce Airbus A380. Air bus A380 is the largest Air plane ever made. We have also been developing new technology, fuel efficient Airlines.</p>
+                                    
+                                
                             </div>
                         </div>
                         <div class="tabcontent hide" id="cont-2-1">
@@ -232,9 +230,9 @@
                                 </div>
                             </div>
                             <div class="Description">
-                                <h3>Smauris vitae consequat<span>Vestibulum ullamcorper faucibus orci</span></h3>
-                                <p>Consequat ipsum, nec sagittis sem nibh id elit. Dui sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Namslo nec tellus a odio tincidunt auctor a ornare odio. Smauris vitae erat consequat sitsrl amet soi mauris auctor eu in elit. </p>
-                                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostraper inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus.</p>
+                                <h3><span>Vision</span></h3>
+                                <p>Our vision is to make Pakistan the world largest Airline companies. We are also developing new technology that will take over the traditional Airline engines and take them to the future. </p>
+                                
                             </div>
                         </div>
                         <div class="tabcontent hide" id="cont-3-1">
@@ -247,9 +245,9 @@
                                 </div>
                             </div>
                             <div class="Description">
-                                h3>Smauris vitae consequat<span>Vestibulum ullamcorper faucibus orci</span></h3>
-                                <p>Consequat ipsum, nec sagittis sem nibh id elit. Dui sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Namslo nec tellus a odio tincidunt auctor a ornare odio. Smauris vitae erat consequat sitsrl amet soi mauris auctor eu in elit. </p>
-                                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostraper inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus.</p>
+                                <h3><span>Sponsers</span></h3>
+                                <p>Pepsi, Coca Cola, Uniliver, Lays, Peakfreans, LU, JOJO, Candiland</p>
+                                <p>There is no end to our vision</p>
                             </div>
                         </div>
 	                    <div class="clear"></div>	
@@ -258,31 +256,13 @@
                 </div>
             </div>
             <!-- // End About Section // -->
-        <!-- \\ Begin Services Section \\ -->
-        <div class="Services_sec" id="services">
-            <div class="Center">
-                <h2>our Services</h2>
-                <p> Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent<br> taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>		
-                <div class="Line"></div>
-                <!-- \\ Begin Services Side  \\ -->
-                <div class="Serviceside">
-                    <ul>
-	                    <li class="Development"><a href="#services"><h4>DEVELOPMENT</h4></a></li>
-    	                <li class="Desdin"><a href="#services"><h4>DESIGN</h4></a></li>
-	                    <li class="Concept"><a href="#services"><h4>CONCEPT</h4></a></li>
-	                    <li class="System"><a href="#services"><h4>SYSTEM</h4></a></li>
-                    </ul>
-                </div>
-                <!-- // End Services Side // -->
-            </div>                
-        </div>
-        <!-- // End Services Section // -->
+      
   		<!-- \\ Begin Pricing Section \\ -->
         <div class="Pricing_sec" id="booking">
             <div class="Center">
                 <h2>Ticket Booking</h2>
-                <p>All plans come with unlimited disk space. Our support can be as quick as 15 minutes to get a response. Sed non<br>
-                mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu.</p>
+                <p>Please choose your destination and feel free to fly with us.<br>
+                </p>
                 <div class="Line"></div>
                 <!-- \\ Begin Pricing Side \\ -->
                 <div style="padding-top: 10px; padding-bottom: 10px; ">

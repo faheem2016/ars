@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/search"})
 public class search extends HttpServlet {
+    DB con = new DB();
 int flag1 = 0, flag2 = 0, flag3 = 0;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,6 +46,19 @@ int flag1 = 0, flag2 = 0, flag3 = 0;
         
             if (check > 0) {
                 request.setAttribute("flight_no", check);
+                String from_city=from_city(fromID);
+                request.setAttribute("from_city", from_city);
+                String to_city=from_city(toID);
+                request.setAttribute("to_city", to_city);
+                
+                Time time=time_check(check);
+                request.setAttribute("time", time);
+
+                request.setAttribute("departure_date", date);
+                
+                String fare=fare(check);
+                request.setAttribute("fare", fare);
+                
                 RequestDispatcher dispatcher = request.getRequestDispatcher("booking.jsp");
                 dispatcher.forward(request, response);
             } else {
@@ -50,7 +67,58 @@ int flag1 = 0, flag2 = 0, flag3 = 0;
             }
            
     }
+    
+    String fare(int check)
+    {
+      try {
+            
+            ResultSet a = con.stmt.executeQuery("SELECT fare FROM flight_schedule where flight_no = '"+check +"' " );
+            if (a.next()) {
+                 return a.getString("fare");
+            }
 
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;   
+    }
+    
+    Time time_check(int check)
+    {
+      try {
+            
+            ResultSet a = con.stmt.executeQuery("SELECT time FROM flight_schedule where flight_no = '"+check +"' " );
+            if (a.next()) {
+                 return a.getTime("time");
+                 
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;   
+    }
+    String from_city(String from)
+    {
+         try {
+            String f ;
+            ResultSet a = con.stmt.executeQuery("SELECT name FROM city where id = '"+from +"' " );
+            if (a.next()) {
+                f = a.getString("name");
+                return f;
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+    
     private int compare(String from, String to, String date){
          DB con = new DB();
      

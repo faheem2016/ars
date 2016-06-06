@@ -45,14 +45,13 @@ public class bookSeat extends HttpServlet {
 
         // todo: insert passenger info and get id
         DB con = new DB();
-        DB con1 = new DB();
         try {
             con.stmt.execute("insert into traveler_detail(pas_name,pas_tno,pas_email,pas_account,pas_password) values('" + pName + "','" + pPhone + "','" + pEmail + "','" + pAccount + "','" + pAccPass + "')");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         try {
-            ResultSet test = con1.stmt.executeQuery("select pas_id from traveler_detail where pas_name='" + pName + "' and pas_email='" + pEmail + "' and pas_account='" + pAccount + "'");
+            ResultSet test = con.stmt.executeQuery("select pas_id from traveler_detail where pas_name='" + pName + "' and pas_email='" + pEmail + "' and pas_account='" + pAccount + "'");
             if (test.next()) {
                 String pas_id = test.getString("pas_id");
                 try {

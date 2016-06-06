@@ -33,8 +33,9 @@ public class update_pass extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String T_no=request.getParameter("ticketNo");
         String pass_name=request.getParameter("name");
-        String city=request.getParameter("city");
         String phone=request.getParameter("phone");
+        String accno=request.getParameter("accno");
+        String pass=request.getParameter("pass");
         String email=request.getParameter("email");
         DB con=new DB();
         DB con1=new DB();
@@ -42,20 +43,22 @@ public class update_pass extends HttpServlet {
         String p_id="";
         try
         {
-            con.rs=con.stmt.executeQuery("select pas_tno, pas_id from booked_seats where pas_tno='"+T_no+"'");
+            con.rs=con.stmt.executeQuery("select seat, pas_id from booked_seats where seat='"+T_no+"'");
             if (con.rs.next()) {
-                String s_no = con.rs.getString("pas_tno");
+                String s_no = con.rs.getString("seat");
                 p_id = con.rs.getString("pas_id");
                 
                     try
                     {
                         
-                        con2.stmt.execute("UPDATE traveler_detail set pas_name='"+pass_name+"', pas_city='"+city+"', "
-                                + "pas_tno='"+s_no+"', pas_email='"+email+"', pas_phone='"+phone+"' where pas_id='"+p_id+"'");
+                        con2.stmt.execute("UPDATE traveler_detail set pas_name='"+pass_name+"',"
+                                + "pas_tno='"+s_no+"', pas_email='"+email+"', pas_tno='"+phone+"', pas_account='"+accno+"', pas_password='"+pass+"' where pas_id='"+p_id+"'");
                     }
                     catch(SQLException e)
                     {
                         System.out.println(e);
+                        request.setAttribute("success", e);
+                         request.getRequestDispatcher("update_p.jsp").forward(request, response);
                     }
                         
                 
